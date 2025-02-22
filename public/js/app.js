@@ -377,6 +377,10 @@ class TableApp
 			{
 				self.testForUpdates();
 			},
+			sort: function()
+			{
+				console.log("sorting");
+			},
 			start: function(event, ui)
 			{
 				$(ui.helper).parent().mousemove(function(e)
