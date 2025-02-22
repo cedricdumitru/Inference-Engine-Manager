@@ -381,8 +381,7 @@ class TableApp
 			{
 				let container = (ui.helper).parents("tbody")
 				let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46) + 2;
-				console.log($(container).children());
-				console.log($(container).children(":nth-child("+ position +")"));
+				console.log($(container).children(":nth-child("+ position +")").text());
 			},
 		});
 		this.container.find("tbody" ).disableSelection();
