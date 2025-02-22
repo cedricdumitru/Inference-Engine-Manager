@@ -187,3 +187,10 @@ table tbody tr div.relative i:hover
 	color: #EF0739;
 	transition: all 0.1s linear;
 }
+
+table tbody tr.sortable-placeholder
+{
+	border-radius: 5px;
+	opacity: 0.2;
+	border: dashed 4px rgba(0, 102, 255, 0.568);
+}
