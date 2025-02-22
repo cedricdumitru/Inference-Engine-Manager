@@ -164,3 +164,47 @@ input[type="submit"]:hover, button[type="submit"]:hover
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
+
+button.primary
+{
+	font-size: 0.8rem;
+	padding: 10px 20px;
+	color: #FFFFFF;
+	background-color: #EF0739;
+	text-transform: uppercase;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	border: none;
+	border-radius: 4px;
+}
+
+button.secondary
+{
+}
+
+button.tertiary
+{
+	font-size: 0.8rem;
+	padding: 10px 20px;
+	color: #EF0739;
+	background-color: #FFFFFF;
+	text-transform: uppercase;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	border: none;
+	border-radius: 4px;
+}
+
+button.primary:focus
+{
+	outline: none;
+}
+
+button.tertiary:focus
+{
+	outline: none;
+}
+
+button.primary:focus
+{
+}
