@@ -239,12 +239,12 @@ div.navViewer ul.navNestableRoot li:hover
 	background-color: rgba(0, 0, 0, 1.1);
 }
 
-div.navViewer ul.nestedNav
+div.navViewer ul.navNestable
 {
 	padding-left: 20px;
 }
 
-div.navViewer ul.nestedNav:not(:last-of-type):not(:first-of-type)
+div.navViewer ul.navNestable:not(:last-of-type):not(:first-of-type)
 {
 	padding: 5px 10px;
 	border-top: 1px solid #4E4E4E;
