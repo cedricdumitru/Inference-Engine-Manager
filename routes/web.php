@@ -1,4 +1,5 @@
 <?php
+use Debugbar;
 
 \Debugbar::enable();
 /*
