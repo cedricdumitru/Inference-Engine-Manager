@@ -382,6 +382,7 @@ class TableApp
 				let container = (ui.helper).parents("tbody")
 				let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46) + 1;
 				console.log("td:nth-child("+ position +")");
+				console.log(container);
 				console.log(container.find("td:nth-child("+ position +")").text());
 			},
 		});
