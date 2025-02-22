@@ -2,27 +2,23 @@ class nestableNavBar
 {
 	constructor(container, resourceUrl)
 	{
-		console.log("found");
 		if (!container.length || !resourceUrl.length) throw "Empty parameters, check container and resourceUrl are correctly provided";
 		this.container = container;
 		this.resourceUrl = resourceUrl
-		console.log("found");
 		this.getData();
 	}
 
 	getData()
 	{
-		console.log("found");
 		let self = this;
 		$.ajax(
 			{
-				url: this.submitUrl,
+				url: this.resourceUrl,
 				context: document.body,
 				type: "GET",
 				dataType: "json"
 			}).done(function(data)
 			{
-				console.log("found");
 				if (!data.length) throw "Empty data, check resourceUrl is correct";
 				self.data = data;
 				self.emptyContainer = $(self.container.clone());
