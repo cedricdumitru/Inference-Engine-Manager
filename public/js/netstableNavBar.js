@@ -35,7 +35,7 @@ class nestableNavBar
 			if (!!element.referral)
 			{
 				let tempRoot = (root.find("li[data-id=\""+element.referral+"\"]>ul").length === 0)
-					? root.find("li[data-id=\""+element.referral+"\"]").append($("<ul></ul>"))
+					? root.find("li[data-id=\""+element.referral+"\"]").append($("<ul class=\"working\"></ul>")).find("ul")
 					: root.find("li[data-id=\""+element.referral+"\"]>ul");
 				tempRoot.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"));
 			}
