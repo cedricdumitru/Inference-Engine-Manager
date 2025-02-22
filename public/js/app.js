@@ -382,6 +382,7 @@ class TableApp
 				let container = (ui.helper).parents("tbody")
 				let position = event.pageY - $(ui.helper).parents("tbody").offset().top;
 				console.log("position / 46 = "+ Math.floor(position / 46));
+				console.log(container.find("td:nth-child("+position+")").html);
 
 //				container.find("td").each(function()
 //				{
