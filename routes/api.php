@@ -15,19 +15,22 @@ use Illuminate\Http\Request;
 
 Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 {
-	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/parametres/{node}"], function()
+	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/categories"], function()
 	{
-		Route::get("/", "ParametreController@getParameter");
-
-		Route::post("/", function(Request $request)
-		{
-		});
-
-		Route::put("/", "ParametreController@setParameter");
-		Route::delete("/", function(Request $request)
-		{
-			echo("DELETE");
-		});
+		Route::get("/", "CategoryController@getCategories");
+		Route::post("/", function(Request $request){echo("POST");});
+		Route::put("/", "CategoryController@setCategories");
+		Route::delete("/", function(Request $request){echo("DELETE");});
 	});
 
+	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/parametres/{node}"], function()
+	{
+		Route::get("/catgories", "ParametreController@getParameter");
+		Route::post("/", function(Request $request){echo("POST");});
+		Route::put("/", "ParametreController@setParameter");
+		Route::delete("/", function(Request $request){echo("DELETE");});
+	});
 });
+
+
+
