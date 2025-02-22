@@ -20,7 +20,7 @@ Route::middleware(["auth"])->group(function()
 	Route::group(["prefix" => "/gestion"], function()
 	{
 		Route::get("/", function(){ return(view("datas.index")); });
-		Route::get("/{node}", "DatasController@PrintData");
+		Route::get("/{node}", "DataController@PrintData");
 	});
 
 
