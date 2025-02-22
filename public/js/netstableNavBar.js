@@ -43,8 +43,8 @@ class nestableNavBar
 			{
 				root.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"));
 			}
-			root.find("li").on('mouseover', function(event) { event.target.addClass('hovering'); });
-			root.find("li").on('mouseout', function(event) { event.target.removeClass('hovering'); });
+			root.find("li").on('mouseover', function(event) { $(event.target).addClass('hovering'); });
+			root.find("li").on('mouseout', function(event) { $(event.target).removeClass('hovering'); });
 			console.log(element);
 		});
 	}
