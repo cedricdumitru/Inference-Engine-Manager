@@ -384,7 +384,6 @@ class TableApp
 			start: function(event, ui)
 			{
 				console.log("start");
-				console.log(ui.offset.top);
 			}
 		});
 		this.container.find("tbody" ).disableSelection();
