@@ -15,13 +15,8 @@ class CategoryController extends Controller
 {
 	use eloquentRequests;
 
-	public function __construct(Request $request)
-	{
-		$this->model = new Category;
-	}
-
 	public function getCategories()
 	{
-		return($this->model->getCategories()->get()->toJson());
+		return(Category::whereNull('referral')->with("getCategories")->get()->toJson());
 	}
 }
