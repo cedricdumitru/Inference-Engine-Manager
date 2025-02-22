@@ -25,7 +25,7 @@ Route::middleware(["auth"])->group(function()
 
 	Route::group(["prefix" => "/parametres"], function()
 	{
-		Route::get("/", function(){ return(view("settings")); });
+		Route::get("/", function(){ return(view("parametres.index")); });
 		Route::get("/{node}", "ParametreController@PrintParameter");
 	});
 

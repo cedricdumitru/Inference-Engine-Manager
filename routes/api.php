@@ -24,7 +24,8 @@ Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 		});
 		Route::get("/", function(Request $request)
 		{
-			echo("GET");
+			//return response()->json(["header" => ["Libellé"], 'data' => [["bonjour", "test"], ["un", "DEIx"], ["deux", "zerfr"]]]);
+			return response()->json(["header" => ["Libellé"], 'data' => [["bonjour"], ["un"], ["deux"]]]);
 		});
 		Route::put("/", function(Request $request)
 		{

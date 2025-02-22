@@ -109,7 +109,6 @@ table
 {
 	color: #333;
 	background: white;
-	border: 1px solid grey;
 	font-size: 12pt;
 	border-collapse: collapse;
 }
@@ -121,11 +120,27 @@ table thead th
 }
 
 table th,
-table td
+table tr:not(.controls) td
 {
 	padding: .5em;
 	border: 1px solid lightgrey;
 	min-width: 280px;
+}
+
+table tr.controls td div.relative i
+{
+	top: -30px;
+	font-size: 1.4rem;
+}
+
+table tr.controls td div.relative i.mdi-check
+{
+	right: 0px;
+}
+
+table tr.controls td div.relative i.mdi-close
+{
+	right: 25px;
 }
 
 table tbody tr:hover

@@ -28,17 +28,17 @@ class ParametreController extends Controller
 
 	public function __construct(Request $request)
 	{
-		$this->views = ["civilites", "clients", "devis", "fonctions", "garanties", "pays", "reglements", "unites", "utilisateurs", "variables"];
+		$this->models = ["civilités" => "civilites", "clients" => "clients", "devis" => "devis", "fonctions" => "fonctions", "garanties" => "garanties", "pays" => "pays", "règlements" => "reglements", "unités" => "unites", "utilisateurs" => "utilisateurs", "variables" => "variables"];
 		if ($request->route('node'))
-			$this->view = $request->route('node');
+			$this->node = $request->route('node');
 		$this->fonction();
 	}
 
 	public function PrintParameter()
 	{
-		if(View::exists($this->view) && in_array($this->view, $this->views))
+		if(in_array($this->node, array_values($this->models)))
 		{
-			return view($this->view);
+			return view("parametres.node", ["title" => array_search($this->node, $this->models), 'node' => $this->node]);
 		}
 		return "La page que vous recherchez est introuvable";
 	}
