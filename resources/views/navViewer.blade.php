@@ -3,6 +3,6 @@
 <script>
 	(function()
 	{
-		new nestableNavBar($("div.navViewer"), "/api/categories/");
+		new nestableNavBar($("div.navViewer"), "{{ $url }}");
 	})();
 </script>

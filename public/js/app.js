@@ -36,13 +36,27 @@ class Alert
 	}
 }
 
+class EditPopup
+{
+	constructor(dataUrl)
+	{
+		this.dataUrl = dataUrl;
+		this.createModal();
+	}
+
+	createModal()
+	{
+		
+	}
+}
+
 class TableApp
 {
-	constructor(container, submitUrl, foldable)
+	constructor(container, submitUrl, specialEdit)
 	{
 		this.container = container;
 		this.submitUrl = submitUrl;
-		this.foldable = foldable;
+		this.specialEdit = specialEdit;
 		this.getData();
 	}
 
@@ -86,7 +100,7 @@ class TableApp
 		{
 			let container = self.destroyTable();
 
-			new TableApp(container, self.submitUrl);
+			new TableApp(container, self.submitUrl, self.specialEdit);
 		});
 
 		this.container.find("thead tr.controls td div i.mdi-check").click(function()
@@ -111,7 +125,7 @@ class TableApp
 			contentType: "application/json",
 			data: JSON.stringify({"header": self.header, "data": self.data}),
 			dataType: "json"
-		}).done(function(data)
+		}).done(() =>
 		{
 			let container = self.destroyTable();
 			new TableApp(container, self.submitUrl);
@@ -129,22 +143,43 @@ class TableApp
 		let self = this;
 		element.hover(function()
 		{
-			$(this).find("td:last-of-type").append("<div class=\"relative\"><i class=\"mdi mdi-delete absolute pointer\"></i></div>");
-			$(this).find("div.relative i.mdi-delete").click(function(e)
+			$(this).find("td:last-of-type").addClass("relative")
+			$(this).find("td:last-of-type").append("<i class=\"mdi mdi-delete absolute pointer\"></i>");
+			$(this).find("i.mdi-delete").click(function(e)
 			{
 				e.preventDefault();
 				e.stopPropagation();
 				let element = $(this).parents("tr");
 				new Alert("Supprimer la ligne", "Souhaitez-vous supprimer cette ligne ?", "supprimer",
-				function(e)
+				function()
 				{
 					element.remove();
 					self.testForUpdates();
 				}, true);
 			});
-		}, function()
+		}, function(e)
 		{
-			$(this).find(".mdi-delete").parent().remove();
+			$(this).find(".mdi-delete").remove();
+		});
+	}
+
+	setEditableElement(element)
+	{
+		if (!this.specialEdit) return;
+		element.hover(function()
+		{
+			$(this).find("td:last-of-type").addClass("relative")
+			$(this).find("td:last-of-type").append("<i class=\"mdi mdi-pencil absolute pointer\"></i>");
+			$(this).find("i.mdi-pencil").click(function(e)
+			{
+				e.preventDefault();
+				e.stopPropagation();
+				let element = $(this).parents("tr");
+				new EditPopup();
+			});
+		}, function(e)
+		{
+			$(this).find(".mdi-pencil").remove();
 		});
 	}
 
@@ -218,11 +253,16 @@ class TableApp
 					self.setEditableContent($(this));
 				});
 				self.setRemovableElement(self.container.find("tbody tr.working"));
+				self.setEditableElement(self.container.find("tbody tr.working"));
 				self.container.find("tbody tr.working").removeClass("working");
 			}
 			else
 			{
-				self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>");
+				//TODO: cast booleans to checkboxes
+				if (index === true || index === false)
+					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>")
+				else
+					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>");
 				i++;
 			}
 		});
@@ -252,6 +292,7 @@ class TableApp
 				self.setEditableContent($(this));
 			});
 			self.setRemovableElement(self.container.find("tbody tr.createdRow"));
+			self.setEditableElement(self.container.find("tbody tr.createdRow"));
 			$("tr.createdRow").removeClass("createdRow");
 			self.testForUpdates();
 		});
@@ -273,7 +314,12 @@ class TableApp
 		let elementArray = new Array();
 		target.children().each(function()
 		{
-			elementArray.push((!isNaN($(this).text())) ? Number($(this).text()) : $(this).text());
+			if ($(this).text() === "true")
+				elementArray.push(true);
+			else if ($(this).text() === "false")
+				elementArray.push(false);
+			else
+				elementArray.push((!isNaN($(this).text())) ? Number($(this).text()) : $(this).text());
 		});
 		return (elementArray);
 	}
@@ -358,6 +404,7 @@ class TableApp
 		this.data = data;
 		if(!this.isEqual(this.data, this.rawData.data))
 		{
+			this.removeControls();
 			this.addControls();
 		}
 		else
@@ -373,25 +420,14 @@ class TableApp
 		//TODO: Remove ternary operator multiline (set function anywhere else && call it in sortable())
 		this.container.find("tbody").sortable(
 		{
-			axis: ((this.foldable) ? "false" : "y"),
+			axis: "y",
 			tolerance: "intersect",
 			placeholder: "sortable-placeholder",
 			update(event, ui)
 			{
 				self.testForUpdates();
 			},
-			sort: ((this.foldable) ? 
-			(
-				function(event, ui)
-				{
-					let container = (ui.helper).parents("tbody")
-					let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46) + 2;
-					if ($(container).children(":nth-child("+ position +")").hasClass("folder"))
-					{
-						console.log("folding");
-					}
-				}
-			) : (function(event, ui) { return; })),
+			sort: function(event, ui) { return; },
 		});
 		this.container.find("tbody" ).disableSelection();
 	}

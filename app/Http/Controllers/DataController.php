@@ -18,27 +18,39 @@ class DataController extends Controller
 
 	public function __construct(Request $request)
 	{
+		if ($request->route()->getPrefix())
+			$this->groupeType = $request->route()->getPrefix();
+
+		if (!$request->route('node')) return;
 		$this->models =
 		[
 			"produits" => 
 			[
 				"title" => "produits",
 				"model" => "Produit"
+			],
+			"collections" => 
+			[
+				"title" => "collections",
+				"model" => "Collection"
 			]
 		];
 
 		if ($request->route('node'))
 			$this->node = $request->route('node');
-		if ($request->route()->getPrefix())
-			$this->groupeType = $request->route()->getPrefix();
 		$this->model = app("App\\".$this->models[$this->node]["model"]);
+	}
+
+	public function PrintCollections()
+	{
+		return view("singleTableNode", ["title" => "Collections", 'groupeType' => $this->groupeType, 'node' => "collections", "navigation" => false, "specialEdit" => true]);
 	}
 
 	public function PrintData()
 	{
 		if(array_key_exists($this->node, $this->models))
 		{
-			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'groupeType' => $this->groupeType, 'node' => $this->node, "navigation" => true]);
+			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'groupeType' => $this->groupeType, 'node' => $this->node, "navigation" => true, "url" => "/api/list/categories"]);
 		}
 		return "La page que vous recherchez est introuvable";
 	}

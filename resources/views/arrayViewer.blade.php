@@ -8,6 +8,6 @@
 <script>
 	(function()
 	{
-		new TableApp($("table.tableApp"), "/api{{ $groupeType }}/{{ $url }}");
+		new TableApp($("table.tableApp"), "/api{{ $groupeType }}/{{ $url }}", "{{ $specialEdit }}");
 	})();
 </script>

@@ -17,6 +17,8 @@ Route::middleware(["auth"])->group(function()
 	Route::group(["prefix" => "/gestion"], function()
 	{
 		Route::get("/", function(){ return(view("datas.index")); });
+
+		Route::get("/collections", "DataController@printCollections");
 		Route::get("/{node}", "DataController@PrintData");
 	});
 

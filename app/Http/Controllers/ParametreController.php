@@ -133,10 +133,10 @@ class ParametreController extends Controller
 
 			if ($this->model->recordExist($filter, null))
 			{
-					array_splice($dataList, array_search($value, $dataList), 1);
-					$edits = $filter;
-					$edits["order"] = $order;
-					$this->model->{"get".$this->models[$this->node]["model"]}($filter)->update($edits);
+				array_splice($dataList, array_search($value, $dataList), 1);
+				$edits = $filter;
+				$edits["order"] = $order;
+				$this->model->{"get".$this->models[$this->node]["model"]}($filter)->update($edits);
 			}
 			else
 			{
@@ -145,10 +145,10 @@ class ParametreController extends Controller
 				foreach ($value as $data)
 				{
 					$parameter[$request->header[$j]] = $data;
+					$j++;
 				}
 				$parameter->order = $order;
 				$parameter->save();
-				$j++;
 			}
 		}
 		foreach ($dataList as $element)

@@ -168,7 +168,12 @@ table.tableApp tr.controls td
 	padding: 0;
 }
 
-table.tableApp tr td:last-of-type:not(:first-of-type)
+table.tableApp tr:last-of-type
+{
+	border-left: 0.5px solid lightgrey;
+}
+
+table.tableApp tr:not(:last-of-type) td
 {
 	border-left: 0.5px solid lightgrey;
 }
@@ -194,15 +199,24 @@ table.tableApp tbody tr:hover
 	background-color: #F5F5F5
 }
 
-table.tableApp tbody tr div.relative i
+table.tableApp tbody tr i.mdi
 {
-	top: -30px;
-	right: 0;
+	top: 0;
 	font-size: 1.4rem;
 	transition: all 0.1s linear;
 }
 
-table.tableApp tbody tr div.relative i:hover
+table.tableApp tbody tr i.mdi-delete
+{
+	right: 0;
+}
+
+table.tableApp tbody tr i.mdi-pencil
+{
+	right: 30px;
+}
+
+table.tableApp tbody tr i:hover
 {
 	color: #EF0739;
 	transition: all 0.1s linear;

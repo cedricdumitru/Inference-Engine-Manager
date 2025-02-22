@@ -15,16 +15,25 @@ use Illuminate\Http\Request;
 
 Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 {
-	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/categories"], function()
+	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/list"], function()
 	{
-		Route::get("/", "CategoryController@getCategories");
-		Route::put("/", "CategoryController@setCategories");
+		Route::get("/collections", "CollectionController@getCollectionsList");
+		Route::put("/collections", "CollectionController@setCollectionsList");
+
+		Route::get("/categories", "CategoryController@getCategoriesList");
+		Route::put("/categories", "CategoryController@setCategoriesList");
 	});
 
 	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/parametres/{node}"], function()
 	{
 		Route::get("/", "ParametreController@getParameter");
 		Route::put("/", "ParametreController@setParameter");
+	});
+
+	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/gestion/{node}"], function()
+	{
+		Route::get("/", "DataController@getData");
+		Route::put("/", "DataController@setData");
 	});
 });
 

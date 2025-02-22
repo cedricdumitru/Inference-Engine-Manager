@@ -20,7 +20,7 @@ class CategoryController extends Controller
 	}
 	use eloquentRequests;
 
-	public function getCategories()
+	public function getCategoriesList()
 	{
 		$categories = Category::orderBy("id")->get();
 		foreach ($categories as $category)
