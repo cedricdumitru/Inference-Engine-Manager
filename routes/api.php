@@ -25,7 +25,7 @@ Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 
 	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/parametres/{node}"], function()
 	{
-		Route::get("/catgories", "ParametreController@getParameter");
+		Route::get("/", "ParametreController@getParameter");
 		Route::post("/", function(Request $request){echo("POST");});
 		Route::put("/", "ParametreController@setParameter");
 		Route::delete("/", function(Request $request){echo("DELETE");});
