@@ -389,7 +389,7 @@ class TableApp
 						console.log("folding");
 					}
 				}
-			) : (function(event, ui) { return; })),
+			) : (function(event, ui) { console.log("test"); return; })),
 		});
 		this.container.find("tbody" ).disableSelection();
 	}
