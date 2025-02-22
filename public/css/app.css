@@ -241,7 +241,7 @@ div.navViewer ul.navNestable
 	position: relative;
 }
 
-div.navViewer ul.navNestable:not(.navNestedRoot):before
+div.navViewer ul.navNestable:not(.navNestableRoot):before
 {
 	position: absolute;
 	display: block;
@@ -253,7 +253,7 @@ div.navViewer ul.navNestable:not(.navNestedRoot):before
 	background-color: rgb(177, 177, 177);
 }
 
-div.navViewer ul.navNestable:not(.navNestedRoot):after
+div.navViewer ul.navNestable:not(.navNestableRoot):after
 {
 	position: absolute;
 	display: block;
@@ -265,7 +265,7 @@ div.navViewer ul.navNestable:not(.navNestedRoot):after
 	background-color: rgb(177, 177, 177);
 }
 
-div.navViewer ul.navNestable:not(.navNestedRoot)
+div.navViewer ul.navNestable:not(.navNestableRoot)
 {
 	padding-left: 50px;
 }
