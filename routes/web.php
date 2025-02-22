@@ -1,7 +1,5 @@
 <?php
-use Debugbar;
-
-\Debugbar::enable();
+Debugbar::error('Error!');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
