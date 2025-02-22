@@ -84,6 +84,8 @@ class ParametreController extends Controller
 
 		if ($request->route('node'))
 			$this->node = $request->route('node');
+		if ($request->route()->getPrefix())
+			$this->groupeType = $request->route()->getPrefix();
 		$this->model = app("App\\".$this->models[$this->node]["model"]);
 	}
 
@@ -91,7 +93,7 @@ class ParametreController extends Controller
 	{
 		if(array_key_exists($this->node, $this->models))
 		{
-			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'node' => $this->node, "navigation" => false]);
+			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'groupeType' => $this->groupeType, 'node' => $this->node, "navigation" => false]);
 		}
 		return "La page que vous recherchez est introuvable";
 	}

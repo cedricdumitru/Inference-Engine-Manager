@@ -31,6 +31,8 @@ class DataController extends Controller
 
 		if ($request->route('node'))
 			$this->node = $request->route('node');
+		if ($request->route()->getPrefix())
+			$this->groupeType = $request->route()->getPrefix();
 		$this->model = app("App\\".$this->models[$this->node]["model"]);
 	}
 
