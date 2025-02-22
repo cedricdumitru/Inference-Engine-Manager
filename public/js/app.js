@@ -42,6 +42,7 @@ class TableApp
 	{
 		this.container = container;
 		this.submitUrl = submitUrl;
+		this.foldable = foldable;
 		this.getData();
 	}
 
@@ -377,15 +378,18 @@ class TableApp
 			{
 				self.testForUpdates();
 			},
-			sort: function(event, ui)
-			{
-				let container = (ui.helper).parents("tbody")
-				let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46) + 2;
-				if ($(container).children(":nth-child("+ position +")").hasClass("folder"))
+			sort: ( (this.foldable) ? 
+			(
+				function(event, ui)
 				{
-					console.log("folding");
+					let container = (ui.helper).parents("tbody")
+					let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46) + 2;
+					if ($(container).children(":nth-child("+ position +")").hasClass("folder"))
+					{
+						console.log("folding");
+					}
 				}
-			},
+			) : (function(event, ui) { return; })),
 		});
 		this.container.find("tbody" ).disableSelection();
 	}

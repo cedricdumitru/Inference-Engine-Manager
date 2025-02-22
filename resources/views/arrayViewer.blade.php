@@ -10,6 +10,6 @@
 <script>
 	(function()
 	{
-		new TableApp($("table.tableApp"), "/api/parametres/{{ $url }}");
+		new TableApp($("table.tableApp"), "/api/parametres/{{ $url }}", {{ $foldable }});
 	})();
 </script>
