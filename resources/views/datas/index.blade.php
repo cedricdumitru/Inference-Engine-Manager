@@ -12,7 +12,6 @@
 			<li class="block"><a href="/gestion/fournisseurs" class="flex column nowrap xCenter ySpaceAround"><img class="actionIcon" src="https://via.placeholder.com/150" alt="Action icon"/>Fournisseurs</a></li>
 		</ul>
 		<ul id="listActions" class="flex row wrap yCenter borderBottom margincenter">
-			<li class="block"><a href="/gestion/divers" class="flex column nowrap xCenter ySpaceAround"><img class="actionIcon" src="https://via.placeholder.com/150" alt="Action icon"/>Paramètres divers</a></li>
 			<li class="block"><a href="/gestion/tva" class="flex column nowrap xCenter ySpaceAround"><img class="actionIcon" src="https://via.placeholder.com/150" alt="Action icon"/>Taux de TVA</a></li>
 		</ul>
 	</section>
