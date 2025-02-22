@@ -34,6 +34,6 @@ class Category extends Model
 
 	public function getCategories()
 	{
-		return $this->find(1);//->hasMany('App\Category', 'referral', 'id')->with('getCategories');
+		return $this->hasMany('App\Category', 'referral', 'id')->with('getCategories');
 	}
 }
