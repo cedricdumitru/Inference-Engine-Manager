@@ -157,7 +157,7 @@ table tr.controls td
 	padding: 0;
 }
 
-table tr.controls td:last-of-type
+table tr td:last-of-type
 {
 	border-left: 4px solid red;
 }
