@@ -218,7 +218,7 @@ table.tableApp tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 	border-left: 30px solid transparent;
 }
 
-div.navViewer>ul.navNestedRoot
+div.navViewer>ul.navNestableRoot
 {
 	display: flex;
 	flex-flow: column nowrap;
@@ -236,13 +236,13 @@ div.navViewer>ul.nestedNav:not(:last-of-type):not(:first-of-type)
 	background-color: #FFFFFF;
 }
 
-div.navViewer>ul.navNestedRoot>li
+div.navViewer>ul.navNestableRoot>li
 {
 	border-left: 1px solid #4E4E4E;
 	border-right: 1px solid #4E4E4E;
 }
 
-div.navViewer>ul.navNestedRoot li:hover
+div.navViewer>ul.navNestableRoot li:hover
 {
 	background-color: rgba(0, 0, 0, 1.1);
 }
