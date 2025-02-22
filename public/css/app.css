@@ -247,7 +247,7 @@ div.navViewer ul.navNestable:before
 	display: block;
 	content: "";
 	top: 0;
-	left: -10px;
+	left: -30px;
 	height: 10px;
 	width: 1px;
 	background-color: rgb(177, 177, 177);
@@ -259,13 +259,13 @@ div.navViewer ul.navNestable:after
 	display: block;
 	content: "";
 	top: 10px;
-	left: -10px;
+	left: -30px;
 	height: 1px;
 	width: 10px;
 	background-color: rgb(177, 177, 177);
 }
 
-div.navViewer ul.navNestable
+div.navViewer ul.navNestable:not(.navNestedRoot)
 {
 	padding-left: 50px;
 }
