@@ -29,7 +29,7 @@ class DataController extends Controller
 				"collections" => "Collection",
 				"tarifs" => "Tarif",
 				"fournisseurs" => "Fournisseur",
-				"clients" => "Client",
+				"tva" => "Tva",
 			];
 			$this->model = app("App\\".$this->models[$this->node]);
 		}
@@ -65,6 +65,17 @@ class DataController extends Controller
 			"node" => "fournisseurs",
 			"navigation" => false,
 			"specialEdit" => true
+		]);
+	}
+
+	public function PrintTva()
+	{
+		return view("singleTableNode", [
+			"title" => "TVA",
+			"groupeType" => $this->groupeType,
+			"node" => "tva",
+			"navigation" => false,
+			"specialEdit" => false
 		]);
 	}
 

@@ -21,6 +21,7 @@ Route::middleware(["auth"])->group(function()
 		Route::get("/collections", "DataController@printCollections");
 		Route::get("/tarifs", "DataController@printTarifs");
 		Route::get("/fournisseurs", "DataController@printFournisseurs");
+		Route::get("/tva", "DataController@printTva");
 
 		//node == produits
 		Route::get("/produits", "DataController@PrintProduits");
