@@ -28,7 +28,18 @@ class ParametreController extends Controller
 
 	public function __construct(Request $request)
 	{
-		$this->models = ["civilités" => "civilites", "clients" => "clients", "devis" => "devis", "fonctions" => "fonctions", "garanties" => "garanties", "pays" => "pays", "règlements" => "reglements", "unités" => "unites", "utilisateurs" => "utilisateurs", "variables" => "variables"];
+		$this->models = [
+			"civilités" => "civilites",
+			"origine des clients" => "clients",
+			"status des devis" => "devis",
+			"fonctions personnes" => "fonctions",
+			"types de garanties" => "garanties",
+			"pays" => "pays",
+			"modes de règlement" => "reglements",
+			"unités" => "unites",
+			"profils utilisateurs" => "utilisateurs",
+			"variables" => "variables"
+		];
 		if ($request->route('node'))
 			$this->node = $request->route('node');
 		$this->fonction();

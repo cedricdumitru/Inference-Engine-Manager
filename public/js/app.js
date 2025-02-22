@@ -36,6 +36,42 @@ class tableApp
 		return (this.emptyContainer);
 	}
 
+	setRemovableElement(element)
+	{
+		element.off();
+		let self = this;
+		element.hover(function()
+		{
+			//TODO: add delete icon to the right && bind event
+		}, function()
+		{
+			//TODO: remove delete icon to the right && drop event
+		});
+	}
+
+	setEditableContent(element)
+	{
+		element.off();
+		let self = this;
+		element.click(function()
+		{
+			if (element.hasClass("editing")) return;
+			$(this).addClass("editing");
+			(!isNaN(parseFloat($(this).text())) && isFinite($(this).text())) ? $(this).append("<input type=\"number\" value=\""+$(this).text()+"\"/>") : $(this).append("<input type=\"text\" value=\""+$(this).text()+"\"/>")
+			$(this).find("input").focus();
+			$(this).css({"font-size": "0px"});
+			$(this).focusout(function()
+			{
+				$(this).text($(this).find("input").val());
+				$(this).find("input").remove();
+				$(this).css({"font-size": "1rem"});
+				$(this).removeClass("editing");
+				self.setEditableContent($(this));
+				self.testForUpdates();
+			});
+		});
+	}
+
 	buildTable()
 	{
 		var self = this;
@@ -54,6 +90,7 @@ class tableApp
 				{
 					self.container.find("tbody tr.working").append("<td>"+subIndex+"</td>");
 				});
+				self.setEditableContent(self.container.find("tbody tr.working td:not(.editing)"));
 				self.container.find("tbody tr.working").removeClass("working");
 			}
 			else
@@ -146,7 +183,7 @@ class tableApp
 		if(!this.isEqual(data, this.data))
 		{
 			this.addControls();
-			//fire Event to purpose cancel submit
+			//TODO: fire Event to purpose submit
 		}
 		else
 		{
@@ -163,7 +200,6 @@ class tableApp
 			update(event, ui)
 			{
 				self.testForUpdates();
-				console.log(self.data);
 			}
 		});
 		this.container.find("tbody" ).disableSelection();

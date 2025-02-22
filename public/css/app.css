@@ -109,7 +109,7 @@ table
 {
 	color: #333;
 	background: white;
-	font-size: 12pt;
+	font-size: 1rem;
 	border-collapse: collapse;
 }
 
@@ -122,9 +122,24 @@ table thead th
 table th,
 table tr:not(.controls) td
 {
+	display: block;
 	padding: .5em;
-	border: 1px solid lightgrey;
+	border-top: 0.5px solid lightgrey;
+	border-right: 0.5px solid lightgrey;
+	border-bottom: 0.5px solid lightgrey;
+	border-left: 0.5px solid lightgrey;
 	min-width: 280px;
+}
+
+table tr:not(.controls) td input
+{
+	color: #333;
+	font-family: "Font-Regular";
+	padding: .5em;
+	width: 100%;
+	outline: none;
+	border: none !important;
+	background-color: rgba(0, 0, 0, 0);
 }
 
 table tr.controls td
