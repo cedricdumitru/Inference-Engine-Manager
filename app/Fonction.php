@@ -21,6 +21,10 @@ class Fonction extends Model
 	 * @var array
 	 */
 	protected $hidden = [
+		"id",
+		"order",
+		"created_at",
+		"updated_at"
 	];
 
 	/**
@@ -30,4 +34,34 @@ class Fonction extends Model
 	 */
 	protected $casts = [
 	];
+
+	function getFonction($filter)
+	{
+		return $this::where($filter)->first();
+	}
+
+	function getMultipleFonction($filter)
+	{
+		return $this::where($filter)->get();
+	}
+
+	function getAllFonction()
+	{
+		return $this::all();
+	}
+
+	function recordExist($column, $value)
+	{
+		return (!!$this->where($column, $value)->count());
+	}
+
+	public function getTableColumns()
+	{
+		return(array_diff($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()), $this->hidden));
+	}
+
+	public function getAllTableColumns()
+	{
+		return($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()));
+	}
 }

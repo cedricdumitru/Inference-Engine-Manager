@@ -1,12 +1,11 @@
 @font-face
 {
 	font-family: "Font-Black";
-	src: url("/&/Phenomena-Black.otf") format("opentype"),
+	src: url("/fonts/Phenomena-Black.otf") format("opentype"),
 		url("/fonts/Phenomena-Black.eot") format("embedded-opentype"),
 		url("/fonts/Phenomena-Black.ttf") format("truetype"),
 		url("/fonts/Phenomena-Black.woff") format("woff"),
 		url("/fonts/Phenomena-Black.woff2") format("woff2");
-
 }
 
 @font-face

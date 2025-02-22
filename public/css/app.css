@@ -122,7 +122,8 @@ table thead th
 table th,
 table tr:not(.controls) td
 {
-	display: block;
+	min-height: 45px;
+	display: inline-block;
 	padding: .5em;
 	border-top: 0.5px solid lightgrey;
 	border-right: 0.5px solid lightgrey;

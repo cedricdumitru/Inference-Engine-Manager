@@ -17,22 +17,13 @@ Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 {
 	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/parametres/{node}"], function()
 	{
+		Route::get("/", "ParametreController@getParameter");
+
 		Route::post("/", function(Request $request)
 		{
-			echo("POST");
-			//$request->node
 		});
-		Route::get("/", function(Request $request)
-		{
-			//return response()->json(["header" => ["Libellé"], 'data' => [["bonjour", "test"], ["un", "DEIx"], ["deux", "zerfr"]]]);
-			return response()->json(["header" => ["Libellé"], 'data' => [["bonjour"], ["un"], ["deux"]]]);
-		});
-		Route::put("/", function(Request $request)
-		{
-			var_dump([["bonjour"], ["un"], ["deux"]]);
-			var_dump($request->all());
-			die();
-		});
+
+		Route::put("/", "ParametreController@setParameter");
 		Route::delete("/", function(Request $request)
 		{
 			echo("DELETE");

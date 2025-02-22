@@ -119,28 +119,28 @@ ul
 {
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
-	    -ms-flex-direction: row;
-	        flex-direction: row;
+		-ms-flex-direction: row;
+			flex-direction: row;
 }
 
 .flex.column
 {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
+		-ms-flex-direction: column;
+			flex-direction: column;
 }
 
 .flex.wrap
 {
 	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
+		flex-wrap: wrap;
 }
 
 .flex.noWrap
 {
 	-ms-flex-wrap: nowrap;
-	    flex-wrap: nowrap;
+		flex-wrap: nowrap;
 }
 
 .flex.row.xCenter

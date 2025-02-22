@@ -38,28 +38,54 @@ class alert
 
 class tableApp
 {
-	constructor(data, container)
+	constructor(container, submitUrl)
 	{
-		this.rawData = data;
-		this.header = data.header;
-		this.data = data.data;
 		this.container = container;
-		this.emptyContainer = $(this.container.clone());
-		this.buildTable();
-		this.setSortable();
+		this.submitUrl = submitUrl;
+		this.getData();
+	}
+
+	getData()
+	{
+		let self = this;
+		$.ajax(
+			{
+				url: this.submitUrl,
+				context: document.body,
+				type: "GET",
+				dataType: "json"
+			}).done(function(data)
+			{
+				self.rawData = data;
+				self.header = self.rawData.header;
+				self.data = self.sanitize(self.rawData.data);
+				self.emptyContainer = $(self.container.clone());
+				self.buildTable();
+				self.setSortable();
+			});
+	}
+
+	sanitize(data)
+	{
+		let sanitizedData = data;
+		return (sanitizedData);
 	}
 
 	addControls()
 	{
 		let self = this;
 
-		this.container.find("thead tr.controls").append("<td><div class=\"relative\"><i class=\"mdi mdi-close absolute pointer\"></i></div></td><td><div class=\"relative\"><i class=\"mdi mdi-check absolute pointer\"></i></div></td>");
+		for(let i = 0; i < this.header.length - 1; i++)
+		{
+			this.container.find("thead tr.controls").append("<td></td>");
+		}
+		this.container.find("thead tr.controls").append("<td><div class=\"relative\"><i class=\"mdi mdi-close absolute pointer\"></i></div><div class=\"relative\"><i class=\"mdi mdi-check absolute pointer\"></i></div></td>");
 
 		this.container.find("thead tr.controls td div i.mdi-close").click(function()
 		{
 			let container = self.destroyTable();
 
-			new tableApp(self.rawData, container);
+			new tableApp(container, self.submitUrl);
 		});
 
 		this.container.find("thead tr.controls td div i.mdi-check").click(function()
@@ -78,20 +104,16 @@ class tableApp
 		let self = this;
 		$.ajax(
 		{
-			url: "/api/parametres/{{ $url }}",
+			url: self.submitUrl,
 			context: document.body,
 			type: "PUT",
 			contentType: "application/json",
-			data: JSON.stringify(this.data)
+			data: JSON.stringify({"header": self.header, "data": self.data}),
+			dataType: "json"
 		}).done(function(data)
 		{
-			console.log(data);
-			/*
-			TODO: check if applied modifications
-			if OK
-				let container = self.destroyTable();
-				new tableApp(self.rawData, container);
-			*/
+			let container = self.destroyTable();
+			new tableApp(container, self.submitUrl);
 		});
 	}
 
@@ -152,21 +174,9 @@ class tableApp
 	setEditableContent(element)
 	{
 		let self = this;
-		let applyEditContent = function(element)
-		{
-			element.text(element.find("input").val());
-			element.find("input").remove();
-			element.css({"font-size": "1rem"});
-			element.removeClass("editing");
-			self.setEditableContent(element);
-			self.testForUpdates();
-		};
 		element.click(function()
 		{
-			if (element.hasClass("editing"))
-			{
-				return;
-			}
+			if (element.hasClass("editing")) return;
 			$(this).addClass("editing");
 			(!isNaN(parseFloat($(this).text())) && isFinite($(this).text())) ? $(this).append("<input type=\"number\" value=\""+$(this).text()+"\"/>") : $(this).append("<input type=\"text\" value=\""+$(this).text()+"\"/>");
 			$(this).find("input").focus();
@@ -186,12 +196,12 @@ class tableApp
 	buildTable()
 	{
 		var self = this;
-
 		this.header.forEach(function(index)
 		{
 			self.container.find("thead tr.header").append("<th scope=\"col\">"+index+"</th>");
 		});
 
+		let i = 0;
 		this.data.forEach(function(index)
 		{
 			if (typeof index == "object")
@@ -199,15 +209,20 @@ class tableApp
 				self.container.find("tbody").append("<tr class=\"working\"></tr>");
 				index.forEach(function(subIndex)
 				{
-					self.container.find("tbody tr.working").append("<td>"+subIndex+"</td>");
+					self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\">"+subIndex+"</td>");
+					i++;
 				});
-				self.setEditableContent(self.container.find("tbody tr.working td:not(.editing)"));
+				self.container.find("tbody tr.working td:not(.editing)").each(function()
+				{
+					self.setEditableContent($(this));
+				});
 				self.setRemovableElement(self.container.find("tbody tr.working"));
 				self.container.find("tbody tr.working").removeClass("working");
 			}
 			else
 			{
-				self.container.find("tbody").append("<tr><td>"+index+"</td></tr>");
+				self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>");
+				i++;
 			}
 		});
 		this.addCreateRow();
@@ -216,21 +231,28 @@ class tableApp
 	addCreateRow()
 	{
 		let self = this;
-		this.container.find("tbody").append("<tr class=\"addRow\"></tr>");
+		this.container.find("tbody").append("<tr class=\"addRow pointer\"></tr>");
+
 		for(let i = 0; i < this.header.length; i++)
 		{
 			this.container.find(".addRow").append("<td class=\"textcenter\">+</td>");
 		}
+
 		this.container.find(".addRow").click(function()
 		{
 			self.container.find("tbody").append("<tr class=\"createdRow\"></tr>");
 			for(let i = 0; i < self.header.length; i++)
 			{
-				self.container.find(".createdRow").append("<td></td>");
+				self.container.find(".createdRow").append("<td data-header=\""+self.header[i]+"\"></td>");
 			}
 			$("tr.createdRow").insertBefore("tr.addRow");
-			self.setEditableContent(self.container.find("tbody tr.createdRow td:not(.editing)"));
+			self.container.find("tbody tr.createdRow td:not(.editing)").each(function()
+			{
+				self.setEditableContent($(this));
+			});
 			self.setRemovableElement(self.container.find("tbody tr.createdRow"));
+			$("tr.createdRow").removeClass("createdRow");
+			self.testForUpdates();
 		})
 	}
 
@@ -240,26 +262,18 @@ class tableApp
 		let self = this;
 		this.container.find("tbody tr").each(function()
 		{
-			computedArray.push(self.elementToArray($(this)));
+			computedArray.push(self.rowToArray($(this)));
 		});
 		return(computedArray);
 	}
 
-	elementToArray(target)
+	rowToArray(target)
 	{
 		let elementArray = new Array();
-		let self = this;
-		if (target.children.length > 1 && target.find("td").length > 1)
+		target.children().each(function()
 		{
-			target.find("td").each(function()
-			{
-				elementArray.push(self.elementToArray($(this)));
-			});
-		}
-		else
-		{
-			elementArray.push(target.text());
-		}
+			elementArray.push((!isNaN($(this).text())) ? Number($(this).text()) : $(this).text());
+		});
 		return (elementArray);
 	}
 
@@ -337,7 +351,7 @@ class tableApp
 
 	testForUpdates()
 	{
-		let addRow = this.container.find(".addRow").clone();
+		let addRow = this.container.find(".addRow").clone(true, false);
 		this.container.find(".addRow").remove();
 		let data = this.computeTable();
 		this.data = data;
@@ -355,7 +369,7 @@ class tableApp
 	setSortable()
 	{
 		let self = this;
-		this.container.find("tbody" ).sortable(
+		this.container.find("tbody").sortable(
 		{
 			axis: "y",
 			update(event, ui)

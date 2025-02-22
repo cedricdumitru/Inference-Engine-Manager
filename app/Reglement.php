@@ -21,6 +21,10 @@ class Reglement extends Model
 	 * @var array
 	 */
 	protected $hidden = [
+		"id",
+		"order",
+		"created_at",
+		"updated_at"
 	];
 
 	/**
@@ -30,4 +34,34 @@ class Reglement extends Model
 	 */
 	protected $casts = [
 	];
+
+	function getReglement($filter)
+	{
+		return $this::where($filter)->first();
+	}
+
+	function getMultipleReglement($filter)
+	{
+		return $this::where($filter)->get();
+	}
+
+	function getAllReglement()
+	{
+		return $this::all();
+	}
+
+	function recordExist($column, $value)
+	{
+		return (!!$this->where($column, $value)->count());
+	}
+
+	public function getTableColumns()
+	{
+		return(array_diff($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()), $this->hidden));
+	}
+
+	public function getAllTableColumns()
+	{
+		return($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()));
+	}
 }

@@ -13,6 +13,7 @@ class Variable extends Model
 	 * @var array
 	 */
 	protected $fillable = [
+
 	];
 
 	/**
@@ -21,6 +22,10 @@ class Variable extends Model
 	 * @var array
 	 */
 	protected $hidden = [
+		"id",
+		"order",
+		"created_at",
+		"updated_at"
 	];
 
 	/**
@@ -30,4 +35,34 @@ class Variable extends Model
 	 */
 	protected $casts = [
 	];
+
+	function getVariable($filter)
+	{
+		return $this::where($filter)->first();
+	}
+
+	function getMultipleVariable($filter)
+	{
+		return $this::where($filter)->get();
+	}
+
+	function getAllVariable()
+	{
+		return $this::all();
+	}
+
+	function recordExist($column, $value)
+	{
+		return (!!$this->where($column, $value)->count());
+	}
+
+	public function getTableColumns()
+	{
+		return(array_diff($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()), $this->hidden));
+	}
+
+	public function getAllTableColumns()
+	{
+		return($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()));
+	}
 }

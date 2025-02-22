@@ -10,15 +10,6 @@
 <script>
 	(function()
 	{
-		$.ajax(
-		{
-			url: "/api/parametres/{{ $url }}",
-			context: document.body,
-			type: "GET",
-			dataType: "json"
-		}).done(function(data)
-		{
-			new tableApp(data, $("table.tableApp"));
-		});
+		new tableApp($("table.tableApp"), "/api/parametres/{{ $url }}");
 	})();
 </script>
