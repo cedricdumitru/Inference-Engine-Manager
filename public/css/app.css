@@ -116,11 +116,12 @@ table.tableApp
 
 table.tableApp.empty
 {
-	background-color: rgba(0, 0, 0, 0.2);
+	display: block;
 	width: 50%;
 	height: 100%;
 	min-height: 50vh;
 	min-width: 50vw;
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 table.tableApp thead th
