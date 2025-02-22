@@ -19,7 +19,7 @@ class DataController extends Controller
 	{
 		$this->models =
 		[
-			"produit" => 
+			"produits" => 
 			[
 				"title" => "produits",
 				"model" => "Produit"
