@@ -18,7 +18,7 @@ Route::middleware(["auth"])->group(function()
 		return(view("dashboard"));
 	});
 
-	Route::get("/logout", function()
+	Route::get("/deconnexion", function()
 	{
 		Auth::logout();
 		return(redirect('connexion'));
@@ -29,4 +29,5 @@ Route::get('/connexion', function()
 {
 	return(view("login"));
 })->name("connexion");
+
 Auth::routes();

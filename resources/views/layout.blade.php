@@ -33,11 +33,11 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 
 		<meta name="description" content="{{env("APP_DESCRIPTION")}}">
 		<meta name="keywords" content="{{env("APP_KEYWORDS")}}">
-		<meta name="ICBM" content="{{env("APP_GPS")}}">
+		<meta name="ICBM" content="{{env("GEO_GPS")}}">
 		<meta name="theme-color" content="{{env("APP_COLOR")}}"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<meta property="og:locale" content="fr_FR">
+		<meta property="og:locale" content="{{env("OG_LOCALE")}}">
 		<meta property="og:title" content="{{env("OG_NAME")}}">
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="{{env("OG_URL")}}">
@@ -50,7 +50,7 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 
 		<meta name="geo.region" content="{{env("GEO_REGION")}}">
 		<meta name="geo.placename" content="{{env("GEO_CITY")}}">
-		<meta name="geo.position" content="{{env("APP_GPS")}}">
+		<meta name="geo.position" content="{{env("GEO_GPS")}}">
 
 		<meta name="twitter:card" content="{{env("TWITTER_CARD")}}">
 		<meta name="twitter:site" content="{{env("TWITTER_SITE")}}">
@@ -62,9 +62,6 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 		<link rel="alternate" hreflang="fr" href="{{env("APP_URL")}}" />
 		<link rel="shortcut icon" href="{{env("APP_FAVICON")}}"/>
 
-		<link rel="stylesheet" type="text/css" href="/css/FrontOfficeStyle.css">
-		<link rel="stylesheet" type="text/css" href="/css/Framework.css">
-
 		<!-- starting insertion of HEADER_CODES -->
 		@foreach (explode(",", env("HEADER_CODES")) as $code)
 			<!-- inserting {{$code}} -->
@@ -73,7 +70,7 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 		@endforeach
 		<!-- ending insertion of HEADER_CODES -->
 	</head>
-	<body>
+	<body class="relative brandColorTertiary">
 		@yield ("content")
 	</body>
 </html>

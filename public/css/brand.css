@@ -1,0 +1,96 @@
+.brandBackgroundColorPrimary
+{
+	background-color: #EF0739;
+}
+
+.brandColorPrimary
+{
+	color: #EF0739;
+}
+
+.brandBackgroundColorSecondary
+{
+	background-color: #2C085B;
+}
+
+.brandColorSecondary
+{
+	color: #2C085B;
+}
+
+.brandBackgroundColorTertiary
+{
+	background-color: #2C085B;
+}
+
+.brandColorTertiary
+{
+	color: #2C085B;
+}
+
+input:not([type="submit"]), textarea
+{
+	font-size: 1rem;
+	padding: 10px;
+	border: none;
+	border-bottom: 1px solid #2C085B;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	background-color: #FFFFFF;
+}
+
+input:not([type="submit"]):focus, textarea:focus
+{
+	background-color: #F0F0F0;
+	border-bottom: 1px solid #EF0739;
+	outline: none;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	color: #2c085b
+}
+
+input:not([type="submit"])::-webkit-input-placeholder, textarea::-webkit-input-placeholder
+{
+	color: #2c085b
+}
+
+input:not([type="submit"]):-ms-input-placeholder, textarea:-ms-input-placeholder
+{
+	color: #2c085b
+}
+
+input:not([type="submit"])::-ms-input-placeholder, textarea::-ms-input-placeholder
+{
+	color: #2c085b
+}
+
+input:not([type="submit"])::placeholder, textarea::placeholder
+{
+	color: #2c085b
+}
+
+input[type="submit"], button[type="submit"]
+{
+	font-size: 1rem;
+	padding: 10px 20px;
+	background-color: #FFFFFF;
+	color: #EF0739;
+	border: 3px solid #FF0739;
+	text-transform: uppercase;
+	font-family: "Phenomena-Bold";
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"]:focus, button[type="submit"]:focus
+{
+	outline: none;
+}
+
+input[type="submit"]:hover, button[type="submit"]:hover
+{
+	background-color: #EF0739;
+	color: #FFFFFF;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}

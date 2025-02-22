@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 .env
+fonts
 
 .vscode/*
 !.vscode/settings.json

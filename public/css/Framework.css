@@ -1,0 +1,252 @@
+*
+{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+html, body
+{
+	margin: 0;
+	padding: 0;
+}
+
+html
+{
+	height: 100%;
+}
+
+body
+{
+	min-height: 100%;
+	overflow-x: hidden;
+}
+
+a
+{
+	text-decoration: none;
+	color: inherit;
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+ul
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.pointer
+{
+	cursor: pointer;
+}
+
+.relative
+{
+	position: relative;
+}
+
+.absolute
+{
+	position: absolute;
+}
+
+.helper
+{
+	cursor: help;
+}
+
+.tohide
+{
+	display: none;
+}
+
+.margincenter
+{
+	margin: 0 auto;
+}
+
+.marginleft
+{
+	margin-right: auto;
+	margin-left: 0;
+}
+
+.marginright
+{
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.textcenter
+{
+	text-align: center;
+}
+
+.textleft
+{
+	text-align: left;
+}
+
+.textright
+{
+	text-align: right;
+}
+
+.block
+{
+	display: block;
+}
+
+.flex
+{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.flex.row
+{
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+}
+
+.flex.column
+{
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+
+.flex.wrap
+{
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+}
+
+.flex.noWrap
+{
+	-ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
+}
+
+.flex.row.xCenter
+{
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+.flex.row.xSpaceBetween
+{
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.flex.row.xSpaceAround
+{
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+}
+
+.flex.row.xSpaceEvenly
+{
+	-webkit-box-pack: space-evenly;
+	    -ms-flex-pack: space-evenly;
+	        justify-content: space-evenly;
+}
+
+.flex.row.yCenter
+{
+	-ms-flex-line-pack: center;
+	    align-content: center;
+}
+
+.flex.row.yStretch
+{
+	-ms-flex-line-pack: stretch;
+	    align-content: stretch;
+}
+
+.flex.row.ySpaceBetween
+{
+	-ms-flex-line-pack: justify;
+	    align-content: space-between;
+}
+
+.flex.row.ySpaceAround
+{
+	-ms-flex-line-pack: distribute;
+	    align-content: space-around;
+}
+
+.flex.column.xCenter
+{
+	-ms-flex-line-pack: center;
+	    align-content: center;
+}
+
+.flex.column.xSpaceBetween
+{
+	-ms-flex-line-pack: justify;
+	    align-content: space-between;
+}
+
+.flex.column.xSpaceAround
+{
+	-ms-flex-line-pack: distribute;
+	    align-content: space-around;
+}
+
+.flex.column.yCenter
+{
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+.flex.column.yStretch
+{
+	-ms-flex-line-pack: stretch;
+	    align-content: stretch;
+}
+
+.flex.column.ySpaceBetween
+{
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.flex.column.ySpaceAround
+{
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+}
+
+.flex.column.ySpaceEvenly
+{
+	-webkit-box-pack: space-evenly;
+	    -ms-flex-pack: space-evenly;
+	        justify-content: space-evenly;
+}
+
+.grid
+{
+	display: grid;
+}
+
+.inline
+{
+	display: inline-block;
+}
