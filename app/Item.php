@@ -28,5 +28,5 @@ class Item extends Model
      * @var array
      */
     protected $casts = [
-    ];
+	];
 }

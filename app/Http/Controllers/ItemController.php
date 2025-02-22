@@ -9,4 +9,8 @@ use Validator;
 
 class ItemController extends Controller
 {
+	public static function getItems($filters = ["id", '>', '0'], $orderBy = ["id", "asc"])
+	{
+		return(Item::where(...$filters)->/*orderBy($orderBy)->*/get());
+	}
 }

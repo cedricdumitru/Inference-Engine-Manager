@@ -54,6 +54,7 @@ input[type="submit"], button[type="submit"]
 
 body>nav#mainMenu
 {
+	z-index: 90;
 	top: 0;
 	height: 90px;
 	width: 100%;
@@ -218,17 +219,13 @@ table.tableApp tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 	border-left: 30px solid transparent;
 }
 
-div.navViewer>ul.navNestableRoot
+div.navViewer
 {
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: start;
-	align-items: stretch;
+	padding: 10px;
 	border-top: 1px solid #4E4E4E;
 	border-bottom: 1px solid #4E4E4E;
 	border-left: 1px solid #4E4E4E;
 	border-right: 1px solid #4E4E4E;
-	padding-left: 20px;
 }
 
 div.navViewer ul.navNestable
@@ -248,20 +245,8 @@ div.navViewer ul.navNestable:not(.navNestableRoot):before
 	content: "";
 	top: 0;
 	left: 10px;
-	height: 10px;
+	height: calc(100% - 10px);
 	width: 1px;
-	background-color: rgb(177, 177, 177);
-}
-
-div.navViewer ul.navNestable:not(.navNestableRoot):after
-{
-	position: absolute;
-	display: block;
-	content: "";
-	top: 10px;
-	left: 10px;
-	height: 1px;
-	width: 10px;
 	background-color: rgb(177, 177, 177);
 }
 
@@ -276,10 +261,24 @@ div.navViewer ul.navNestable:not(:last-of-type):not(:first-of-type)
 div.navViewer ul.navNestable li
 {
 	cursor: pointer;
-	padding: 0px 10px 0 20px;
+	padding: 0;
+	position: relative;
 }
 
 div.navViewer ul.navNestable li.hovering
 {
 	background-color: rgba(0, 0, 0, 0.2);
 }
+
+div.navViewer ul.navNestable li:after
+{
+	position: absolute;
+	display: block;
+	content: "";
+	top: 13px;
+	left: -10px;
+	height: 1px;
+	width: 10px;
+	background-color: rgb(177, 177, 177);
+}
+
