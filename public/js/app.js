@@ -380,10 +380,10 @@ class TableApp
 			sort: function(event, ui)
 			{
 				let container = (ui.helper).parents("tbody")
-				let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46) + 1;
+				let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46);
 				console.log("td:nth-child("+ position +")");
-				console.log(container);
-				console.log(container.find("td:nth-child("+ position +")").text());
+				console.log();
+				console.log(container.children[position].text());
 			},
 		});
 		this.container.find("tbody" ).disableSelection();
