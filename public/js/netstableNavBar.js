@@ -29,8 +29,21 @@ class nestableNavBar
 	
 	buildList()
 	{
+		let root = this.container.append($("<ul class=\"navNestableRoot\"></ul>"));
 		this.data.forEach(element =>
 		{
+			if (!!element.referral)
+			{
+				if (root.find("li[data-id=\""+element.referral+"\"]>ul").length === 0)
+					let tempRoot = root.find("li[data-id=\""+element.referral+"\"]").append($("<ul></ul>"));
+				else
+					tempRoot = root.find("li[data-id=\""+element.referral+"\"]>ul");
+				tempRoot.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"));
+			}
+			else
+			{
+				root.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"))
+			}
 			console.log(element);
 		});
 	}
