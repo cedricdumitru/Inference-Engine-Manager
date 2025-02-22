@@ -26,7 +26,7 @@ Route::middleware(["auth"])->group(function()
 	Route::group(["prefix" => "/parametres"], function()
 	{
 		Route::get("/", function(){ return(view("settings")); });
-		Route::get("/unites", function(){ return(view("units"));});
+		Route::get("/{node}", "ParametreController@PrintParameter");
 	});
 
 	Route::get("/deconnexion", function()

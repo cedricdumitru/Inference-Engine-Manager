@@ -13,6 +13,27 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
+{
+	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/parametres/{node}"], function()
+	{
+		Route::post("/", function(Request $request)
+		{
+			echo("POST");
+			//var_dump($request->node);
+		});
+		Route::get("/", function(Request $request)
+		{
+			echo("GET");
+		});
+		Route::put("/", function(Request $request)
+		{
+			echo("PUT");
+		});
+		Route::delete("/", function(Request $request)
+		{
+			echo("DELETE");
+		});
+	});
+
 });
