@@ -381,7 +381,10 @@ class TableApp
 			{
 				let container = (ui.helper).parents("tbody")
 				let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46) + 2;
-				console.log($(container).children(":nth-child("+ position +")").text());
+				if ($(container).children(":nth-child("+ position +")").hasClass("folder"))
+				{
+					console.log("folding");
+				}
 			},
 		});
 		this.container.find("tbody" ).disableSelection();
