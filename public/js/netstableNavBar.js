@@ -34,14 +34,9 @@ class nestableNavBar
 		{
 			if (!!element.referral)
 			{
-				if (root.find("li[data-id=\""+element.referral+"\"]>ul").length === 0)
-				{
-					let tempRoot = root.find("li[data-id=\""+element.referral+"\"]").append($("<ul></ul>"));
-				}
-				else
-				{
-					tempRoot = root.find("li[data-id=\""+element.referral+"\"]>ul");
-				}
+				let tempRoot = (root.find("li[data-id=\""+element.referral+"\"]>ul").length === 0)
+					? root.find("li[data-id=\""+element.referral+"\"]").append($("<ul></ul>"))
+					: root.find("li[data-id=\""+element.referral+"\"]>ul");
 				tempRoot.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"));
 			}
 			else
