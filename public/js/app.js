@@ -2,7 +2,7 @@ $(document).ready(function()
 {
 	$( "table.tableApp.sortable tbody" ).sortable({
 		axis: "y",
-		update: function(event, ui)
+		update(event, ui)
 		{
 			//TODO: recalculate Array && push modification to memory
 		}
