@@ -20,8 +20,10 @@ Route::middleware(["auth"])->group(function()
 
 		Route::get("/collections", "DataController@printCollections");
 		Route::get("/tarifs", "DataController@printTarifs");
+		Route::get("/fournisseurs", "DataController@printFournisseurs");
 
-		Route::get("/{node}", "DataController@PrintData");
+		//node == produits
+		Route::get("/produits", "DataController@PrintProduits");
 	});
 
 	Route::group(["prefix" => "/parametres"], function()

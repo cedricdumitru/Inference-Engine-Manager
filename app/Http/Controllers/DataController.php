@@ -20,55 +20,64 @@ class DataController extends Controller
 	{
 		if ($request->route()->getPrefix())
 			$this->groupeType = $request->route()->getPrefix();
-
-		if (!$request->route('node')) return;
-		$this->models =
-		[
-			"produits" => 
-			[
-				"title" => "produits",
-				"model" => "Produit"
-			],
-			"collections" => 
-			[
-				"title" => "collections",
-				"model" => "Collection"
-			],
-			"tarifs" => 
-			[
-				"title" => "tarifs",
-				"model" => "Tarif"
-			]
-		];
-
 		if ($request->route('node'))
+		{
 			$this->node = $request->route('node');
-		$this->model = app("App\\".$this->models[$this->node]["model"]);
+			$this->models =
+			[
+				"produits" => "Produit",
+				"collections" => "Collection",
+				"tarifs" => "Tarif",
+				"fournisseurs" => "Fournisseur",
+				"clients" => "Client",
+			];
+			$this->model = app("App\\".$this->models[$this->node]);
+		}
 	}
 
 	public function PrintCollections()
 	{
-		return view("singleTableNode", ["title" => "Collections", 'groupeType' => $this->groupeType, 'node' => "collections", "navigation" => false, "specialEdit" => true]);
+		return view("singleTableNode", [
+			"title" => "Collections",
+			"groupeType" => $this->groupeType,
+			"node" => "collections",
+			"navigation" => false,
+			"specialEdit" => true
+		]);
 	}
 
 	public function PrintTarifs()
 	{
-		return view("singleTableNode", ["title" => "Tarifs", 'groupeType' => $this->groupeType, 'node' => "tarifs", "navigation" => false, "specialEdit" => true]);
+		return view("singleTableNode", [
+			"title" => "Tarifs",
+			"groupeType" => $this->groupeType,
+			"node" => "tarifs",
+			"navigation" => false,
+			"specialEdit" => true
+		]);
 	}
 
-	public function PrintData()
+	public function PrintFournisseurs()
 	{
-		if(array_key_exists($this->node, $this->models))
-		{
-			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'groupeType' => $this->groupeType, 'node' => $this->node, "navigation" => true, "url" => "/api/list/categories"]);
-		}
-		return "La page que vous recherchez est introuvable";
+		return view("singleTableNode", [
+			"title" => "Fournisseurs",
+			"groupeType" => $this->groupeType,
+			"node" => "fournisseurs",
+			"navigation" => false,
+			"specialEdit" => true
+		]);
 	}
 
-	public function getData()
+	public function PrintProduits()
 	{
+		return view("singleTableNode", ["title" => "Produits", 'groupeType' => $this->groupeType, 'node' => "produits", "navigation" => true, "url" => "/api/list/categories", "specialEdit" => true]);
+	}
+
+	public function getData(Request $request)
+	{
+
 		$header = array_values($this->model->getTableColumns());
-		$result = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());
+		$result = array_values($this->model->{"getAll".$this->models[$this->node]}()->toArray());
 		$data = array();
 		foreach ($result as $value)
 		{
@@ -79,7 +88,7 @@ class DataController extends Controller
 
 	public function setData(Request $request)
 	{
-		$results = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());
+		$results = array_values($this->model->{"getAll".$this->models[$this->node]}()->toArray());
 		$data = array();
 		$libelleList = array();
 		foreach ($results as $result)
@@ -104,11 +113,11 @@ class DataController extends Controller
 				array_splice($libelleList, array_search($value, $libelleList), 1);
 				$edits = $filter;
 				$edits["order"] = $order;
-				$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $filter["Libellé"]])->update($edits);
+				$this->model->{"get".$this->models[$this->node]}(["Libellé" => $filter["Libellé"]])->update($edits);
 			}
 			else
 			{
-				$model = "App\\".$this->models[$this->node]["model"];
+				$model = "App\\".$this->models[$this->node];
 				$data = new $model;
 				foreach ($value as $newData)
 				{
@@ -121,7 +130,7 @@ class DataController extends Controller
 		}
 		foreach ($libelleList as $libelle)
 		{
-			$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $libelle])->delete();
+			$this->model->{"get".$this->models[$this->node]}(["Libellé" => $libelle])->delete();
 		}
 		return;
 	}

@@ -2,7 +2,7 @@
 @section ("content")
 	<section id="dashboard tableApp" class="">
 		<h1 class="textcenter uppercase">{{ $title }}</h1>
-		<div class="container flex row wrap xSpaceBetween ySpaceBetween">
+		<div class="singleTableNodeContainer flex row wrap xSpaceBetween">
 			@if (isset($navigation) && !empty($navigation) && !!$navigation)
 				@component('navViewer', ["title" => $title, "url" => $node, "url" => $url])
 					<strong>Whoops!</strong> Une erreur s'est produite !

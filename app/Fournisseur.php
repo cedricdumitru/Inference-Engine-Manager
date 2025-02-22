@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Client extends Model
+class Fournisseur extends Model
 {
 	/**
 	 * The attributes that are mass assignable.
@@ -33,14 +33,15 @@ class Client extends Model
 	 * @var array
 	 */
 	protected $casts = [
+		"actif" => "boolean"
 	];
 
-	function getClient($filter)
+	function getFournisseur($filter)
 	{
 		return $this::where($filter)->orderBy('order', 'asc');
 	}
 
-	function getAllClient()
+	function getAllFournisseur()
 	{
 		return $this::orderBy('order', 'asc')->get();
 	}

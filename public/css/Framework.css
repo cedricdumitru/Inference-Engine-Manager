@@ -180,11 +180,6 @@ ul
 	align-items: stretch;
 }
 
-.flex.row.ySpaceBetween
-{
-	align-items: space-between;
-}
-
 .flex.row.ySpaceAround
 {
 	align-items: space-around;
