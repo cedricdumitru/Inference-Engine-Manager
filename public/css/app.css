@@ -218,6 +218,29 @@ table.tableApp tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 	border-left: 30px solid transparent;
 }
 
-div.navViewer
+div.navViewer>ul.nestedNavRoot
 {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: start;
+	align-items: stretch;
+}
+
+div.navViewer>ul.nestedNavRoot>li
+{
+	padding: 5px 10px;
+	border-left: 1px solid #4E4E4E;
+	border-right: 1px solid #4E4E4E;
+	border-bottom: 1px solid #4E4E4E;
+	background-color: #FFFFFF;
+}
+
+div.navViewer>ul.nestedNavRoot>li:first-of-type
+{
+	border-top: 1px solid #4E4E4E;
+}
+
+div.navViewer>ul.nestedNavRoot>li:hover
+{
+	background-color: rgba(0, 0, 0, 1.1);
 }
