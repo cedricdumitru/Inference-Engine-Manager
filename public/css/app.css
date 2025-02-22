@@ -265,7 +265,7 @@ div.navViewer ul.navNestable:after
 	background-color: rgb(177, 177, 177);
 }
 
-div.navViewer ul.navNestable:not(:first-of-type)
+div.navViewer ul.navNestable
 {
 	padding-left: 50px;
 }
