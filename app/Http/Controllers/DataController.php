@@ -76,16 +76,16 @@ class DataController extends Controller
 		$this->model = app("App\\".$this->models[$this->node]["model"]);
 	}
 
-	public function PrintParameter()
+	public function PrintData()
 	{
 		if(array_key_exists($this->node, $this->models))
 		{
-			return view("parametres.node", ["title" => $this->models[$this->node]["title"], 'node' => $this->node]);
+			return view("datas.node", ["title" => $this->models[$this->node]["title"], 'node' => $this->node]);
 		}
 		return "La page que vous recherchez est introuvable";
 	}
 
-	public function getParameter()
+	public function getData()
 	{
 		$header = array_values($this->model->getTableColumns());
 		$result = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());
@@ -97,7 +97,7 @@ class DataController extends Controller
 		return response()->json(["header" => $header, "data" => $data]);
 	}
 
-	public function setParameter(Request $request)
+	public function setData(Request $request)
 	{
 		$result = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());$data = array();
 		$dataList = array();
@@ -128,13 +128,13 @@ class DataController extends Controller
 			else
 			{
 				$model = "App\\".$this->models[$this->node]["model"];
-				$parameter = new $model;
+				$data = new $model;
 				foreach ($value as $data)
 				{
-					$parameter[$request->header[$j]] = $data;
+					$data[$request->header[$j]] = $data;
 				}
-				$parameter->order = $order;
-				$parameter->save();
+				$data->order = $order;
+				$data->save();
 				$j++;
 			}
 		}
@@ -142,6 +142,6 @@ class DataController extends Controller
 		{
 			$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $element])->delete();
 		}
-		return($this->getParameter());
+		return($this->getData());
 	}
 }
