@@ -373,7 +373,6 @@ class TableApp
 		{
 			containment: "parent",
 			tolerance: "intersect",
-			axis: "y",
 			update(event, ui)
 			{
 				self.testForUpdates();
