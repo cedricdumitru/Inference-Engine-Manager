@@ -106,7 +106,7 @@ ul#listActions a
 	width: 100%;
 }
 
-table
+table.tableApp
 {
 	color: #333;
 	background: white;
@@ -114,13 +114,13 @@ table
 	border-collapse: collapse;
 }
 
-table thead th
+table.tableApp thead th
 {
 	color: #777;
 	background-color: rgba(0,0,0,.1);
 }
 
-table th, table tr:not(.controls) td
+table.tableApp th, table.tableApp tr:not(.controls) td
 {
 	min-height: 45px;
 	display: inline-block;
@@ -128,7 +128,7 @@ table th, table tr:not(.controls) td
 	min-width: 280px;
 }
 
-table tr:not(.controls)
+table.tableApp tr:not(.controls)
 {
 	border-top: 0.5px solid lightgrey;
 	border-right: 0.5px solid lightgrey;
@@ -136,7 +136,7 @@ table tr:not(.controls)
 	border-left: 0.5px solid lightgrey;
 }
 
-table tr:not(.controls) td input
+table.tableApp tr:not(.controls) td input
 {
 	color: #333;
 	font-family: "Font-Regular";
@@ -147,43 +147,43 @@ table tr:not(.controls) td input
 	background-color: rgba(0, 0, 0, 0);
 }
 
-table tr:not(.controls) td:hover input
+table.tableApp tr:not(.controls) td:hover input
 {
 	border-width: 0;
 }
 
-table tr.controls td
+table.tableApp tr.controls td
 {
 	padding: 0;
 }
 
-table tr td:last-of-type:not(:first-of-type)
+table.tableApp tr td:last-of-type:not(:first-of-type)
 {
 	border-left: 0.5px solid lightgrey;
 }
 
-table tr.controls td div.relative i
+table.tableApp tr.controls td div.relative i
 {
 	top: -30px;
 	font-size: 1.4rem;
 }
 
-table tr.controls td div.relative i.mdi-check
+table.tableApp tr.controls td div.relative i.mdi-check
 {
 	right: 0px;
 }
 
-table tr.controls td div.relative i.mdi-close
+table.tableApp tr.controls td div.relative i.mdi-close
 {
 	right: 25px;
 }
 
-table tbody tr:hover
+table.tableApp tbody tr:hover
 {
 	background-color: #F5F5F5
 }
 
-table tbody tr div.relative i
+table.tableApp tbody tr div.relative i
 {
 	top: -30px;
 	right: 0;
@@ -191,19 +191,19 @@ table tbody tr div.relative i
 	transition: all 0.1s linear;
 }
 
-table tbody tr div.relative i:hover
+table.tableApp tbody tr div.relative i:hover
 {
 	color: #EF0739;
 	transition: all 0.1s linear;
 }
 
-table tbody tr.sortable-placeholder>td
+table.tableApp tbody tr.sortable-placeholder>td
 {
 	border: none;
 	background-color: rgba(0, 102, 255, 0.2);
 }
 
-table tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
+table.tableApp tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 {
 	border-left: 30px solid transparent;
 }
