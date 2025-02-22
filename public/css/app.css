@@ -197,5 +197,5 @@ table tbody tr.sortable-placeholder>td
 
 table tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 {
-	padding-left: 30px;
+	border-left: 30px transparent;
 }
