@@ -379,8 +379,14 @@ class TableApp
 			},
 			sort: function(event, ui)
 			{
+				let container = (ui.helper).parents("tbody")
 				let position = ui.position.top - $(ui.helper).parents("tbody").offset().top;
 				console.log(position);
+				container.find("td").Each(function()
+				{
+					console.log(this);
+				});
+//				let elementOver = 
 			},
 		});
 		this.container.find("tbody" ).disableSelection();
