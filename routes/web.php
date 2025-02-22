@@ -1,7 +1,7 @@
 <?php
 use Barryvdh\Debugbar\Facade as Debugbar;
 
-\Debugbar::error('Error!');
+Debugbar::error('Error!');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
