@@ -241,25 +241,25 @@ div.navViewer ul.navNestable
 	position: relative;
 }
 
-div.navViewer ul.navNestable:before
+div.navViewer ul.navNestable:not(.navNestedRoot):before
 {
 	position: absolute;
 	display: block;
 	content: "";
 	top: 0;
-	left: -30px;
+	left: 10px;
 	height: 10px;
 	width: 1px;
 	background-color: rgb(177, 177, 177);
 }
 
-div.navViewer ul.navNestable:after
+div.navViewer ul.navNestable:not(.navNestedRoot):after
 {
 	position: absolute;
 	display: block;
 	content: "";
 	top: 10px;
-	left: -30px;
+	left: 10px;
 	height: 1px;
 	width: 10px;
 	background-color: rgb(177, 177, 177);
