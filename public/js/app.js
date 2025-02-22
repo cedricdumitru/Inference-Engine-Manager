@@ -381,9 +381,8 @@ class TableApp
 			{
 				$(ui.helper).parent().mousemove(function(e)
 				{
-					console.log("e.offset.y = "+e.offsetY);
+					console.log(e);
 				});
-				console.log("start");
 			},
 			beforeStop: function(event, ui)
 			{
