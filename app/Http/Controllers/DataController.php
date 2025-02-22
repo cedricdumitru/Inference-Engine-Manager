@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Barryvdh\Debugbar\Facade as Debugbar;
 
 
 use App\CustomLibrary\HttpResponseCode;
@@ -12,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 use Validator;
+use Debugbar;
 
 class DataController extends Controller
 {
@@ -19,7 +19,7 @@ class DataController extends Controller
 
 	public function __construct(Request $request)
 	{
-		Debugbar::error('Error!');
+//		Debugbar::error('Error!');
 		$this->models =
 		[
 			"produits" => 
