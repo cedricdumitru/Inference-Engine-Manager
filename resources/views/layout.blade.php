@@ -73,6 +73,7 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 		<link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/3.8.95/css/materialdesignicons.min.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
 		<script src="/js/app.js"></script>
 	</head>
 	<body class="relative brandColorTertiary">
