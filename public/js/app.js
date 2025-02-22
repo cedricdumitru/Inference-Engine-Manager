@@ -380,7 +380,7 @@ class TableApp
 			sort: function(event, ui)
 			{
 				let container = (ui.helper).parents("tbody")
-				let position = event.offsetY - $(ui.helper).parents("tbody").offset().top;
+				let position = event.pageY - $(ui.helper).parents("tbody").offset().top;
 				console.log("position / 46 = "+ Math.floor(position / 46));
 
 //				container.find("td").each(function()
