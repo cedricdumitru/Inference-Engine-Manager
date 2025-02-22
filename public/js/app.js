@@ -381,11 +381,12 @@ class TableApp
 			{
 				let container = (ui.helper).parents("tbody")
 				let position = ui.position.top - $(ui.helper).parents("tbody").offset().top;
-				console.log(position);
-				container.find("td").each(function()
-				{
-					console.log(this);
-				});
+				console.log("position % 46 = "+ (position % 46));
+//				container.find("td").each(function()
+//				{
+//					if ()
+//					console.log(this);
+//				});
 //				let elementOver = 
 			},
 		});
