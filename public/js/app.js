@@ -377,7 +377,6 @@ class TableApp
 				self.testForUpdates();
 			}
 		});
-		console.log(this.container.find("tbody").sortable);
 		this.container.find("tbody" ).disableSelection();
 	}
 }
