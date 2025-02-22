@@ -381,16 +381,8 @@ class TableApp
 			{
 				let container = (ui.helper).parents("tbody")
 				let position = event.pageY - $(ui.helper).parents("tbody").offset().top;
-				console.log("position / 46 = "+ Math.floor(position / 46));
 				console.log("td:nth-child("+ Math.floor(position / 46) +")");
-				console.log(container.find("td:nth-child("+ Math.floor(position / 46) +")").html());
-
-//				container.find("td").each(function()
-//				{
-//					if ()
-//					console.log(this);
-//				});
-//				let elementOver = 
+				console.log(container.find("td:nth-child("+ Math.floor(position / 46) +")").text);
 			},
 		});
 		this.container.find("tbody" ).disableSelection();
