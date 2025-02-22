@@ -92,23 +92,23 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 			</ul>
 		</nav>
 		<nav aria-label="breadcrumb" role="navigation">
-				@php
-					$segments = Request::segments();
-					$href = url('/');
-				@endphp
-				<ul class="breadcrumb">
-					@foreach($segments as $segment)
+			@php
+				$segments = Request::segments();
+				$href = url('/');
+			@endphp
+			<ul class="breadcrumb flex row nowrap">
+				@foreach($segments as $segment)
 					@php
 						$href .= "/".$segment;
 					@endphp
 					@if ($loop->last)
 					<li class="breadcrumb-item active" aria-current="page">{{ $segment }}</li>
 					@else
-					    <li class="breadcrumb-item"><a href="{{ $href }}">{{ $segment }}</a></li>
+						<li class="breadcrumb-item"><a href="{{ $href }}">{{ $segment }}</a></li><li style="margin: 0 10px; vertical-align: middle;">></li>
 					@endif
-				    @endforeach
-				</ul>
-			    </nav>
+				@endforeach
+			</ul>
+		</nav>
 		@yield ("content")
 	</body>
 </html>

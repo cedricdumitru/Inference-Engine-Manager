@@ -29,7 +29,9 @@ Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 		});
 		Route::put("/", function(Request $request)
 		{
-			echo("PUT");
+			var_dump([["bonjour"], ["un"], ["deux"]]);
+			var_dump($request->all());
+			die();
 		});
 		Route::delete("/", function(Request $request)
 		{

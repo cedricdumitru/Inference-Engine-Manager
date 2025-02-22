@@ -1,3 +1,21 @@
+class alert
+{
+	constructor(text, cancelCallback, applyCallback, fullscreen)
+	{
+		this.text = text;
+		this.cancelCallback = cancelCallback;
+		this.applyCallback = applyCallback;
+		this.fullscreen = fullscreen;
+		this.createModal();
+	}
+
+	createModal()
+	{
+		console.log("create Modal");
+		//TODO: create alert modal
+	}
+}
+
 class tableApp
 {
 	constructor(data, container)
@@ -23,11 +41,38 @@ class tableApp
 
 			new tableApp(self.rawData, container);
 		});
+
+		this.container.find("thead tr.controls td div i.mdi-check").click(function()
+		{
+			self.applyTable();
+		});
 	}
 
 	removeControls()
 	{
 		this.container.find("thead tr.controls td").remove();
+	}
+
+	applyTable()
+	{
+		let self = this;
+		$.ajax(
+		{
+			url: "/api/parametres/{{ $url }}",
+			context: document.body,
+			type: "PUT",
+			contentType: 'application/json',
+			data: JSON.stringify(this.data)
+		}).done(function(data)
+		{
+			console.log(data);
+			/*
+			TODO: check if applied modifications
+			if OK
+				let container = self.destroyTable();
+				new tableApp(self.rawData, container);
+			*/
+		});
 	}
 
 	destroyTable()
@@ -38,21 +83,59 @@ class tableApp
 
 	setRemovableElement(element)
 	{
-		element.off();
 		let self = this;
 		element.hover(function()
 		{
-			//TODO: add delete icon to the right && bind event
+			$(this).append("<div class=\"relative\"><i class=\"mdi mdi-delete absolute pointer\"></i></div>");
+			$(this).find("div.relative i.mdi-delete").click(function(e)
+			{
+				e.preventDefault();
+				e.stopPropagation();
+				//TODO: ask approval to remove element
+				new alert("voulez-vous réellement supprimer cet élement ?", function(){}, function(){}, true);
+			});
 		}, function()
 		{
-			//TODO: remove delete icon to the right && drop event
+			$(this).find(".mdi-delete").parent().remove()
 		});
+	}
+
+	applyEditContentCallback(element)
+	{
+		var self = this;
+		return (function()
+		{
+			element.text(element.find("input").val());
+			element.find("input").remove();
+			element.css({"font-size": "1rem"});
+			element.removeClass("editing");
+			self.setEditableContent(element);
+			self.testForUpdates();
+		});
+	}
+
+	applyEditContent(element, self)
+	{
+		element.text(element.find("input").val());
+		element.find("input").remove();
+		element.css({"font-size": "1rem"});
+		element.removeClass("editing");
+		self.setEditableContent(element);
+		self.testForUpdates();
 	}
 
 	setEditableContent(element)
 	{
-		element.off();
 		let self = this;
+		let applyEditContent = function(element)
+		{
+			element.text(element.find("input").val());
+			element.find("input").remove();
+			element.css({"font-size": "1rem"});
+			element.removeClass("editing");
+			self.setEditableContent(element);
+			self.testForUpdates();
+		};
 		element.click(function()
 		{
 			if (element.hasClass("editing")) return;
@@ -60,14 +143,14 @@ class tableApp
 			(!isNaN(parseFloat($(this).text())) && isFinite($(this).text())) ? $(this).append("<input type=\"number\" value=\""+$(this).text()+"\"/>") : $(this).append("<input type=\"text\" value=\""+$(this).text()+"\"/>")
 			$(this).find("input").focus();
 			$(this).css({"font-size": "0px"});
-			$(this).focusout(function()
+			$(this).focusout(self.applyEditContentCallback(element));
+			$(this).find("input").keypress(function(event)
 			{
-				$(this).text($(this).find("input").val());
-				$(this).find("input").remove();
-				$(this).css({"font-size": "1rem"});
-				$(this).removeClass("editing");
-				self.setEditableContent($(this));
-				self.testForUpdates();
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+				if(keycode == '13')
+				{
+					self.applyEditContent(element, self);
+				}
 			});
 		});
 	}
@@ -91,6 +174,7 @@ class tableApp
 					self.container.find("tbody tr.working").append("<td>"+subIndex+"</td>");
 				});
 				self.setEditableContent(self.container.find("tbody tr.working td:not(.editing)"));
+				self.setRemovableElement(self.container.find("tbody tr.working td:not(.editing)"));
 				self.container.find("tbody tr.working").removeClass("working");
 			}
 			else
@@ -180,10 +264,10 @@ class tableApp
 	testForUpdates()
 	{
 		let data = this.computeTable();
-		if(!this.isEqual(data, this.data))
+		this.data = data;
+		if(!this.isEqual(this.data, this.rawData.data))
 		{
 			this.addControls();
-			//TODO: fire Event to purpose submit
 		}
 		else
 		{
