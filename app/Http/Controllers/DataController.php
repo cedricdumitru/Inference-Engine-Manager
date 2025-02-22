@@ -33,6 +33,11 @@ class DataController extends Controller
 			[
 				"title" => "collections",
 				"model" => "Collection"
+			],
+			"tarifs" => 
+			[
+				"title" => "tarifs",
+				"model" => "Tarif"
 			]
 		];
 
@@ -44,6 +49,11 @@ class DataController extends Controller
 	public function PrintCollections()
 	{
 		return view("singleTableNode", ["title" => "Collections", 'groupeType' => $this->groupeType, 'node' => "collections", "navigation" => false, "specialEdit" => true]);
+	}
+
+	public function PrintTarifs()
+	{
+		return view("singleTableNode", ["title" => "Tarifs", 'groupeType' => $this->groupeType, 'node' => "tarifs", "navigation" => false, "specialEdit" => true]);
 	}
 
 	public function PrintData()

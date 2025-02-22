@@ -19,6 +19,8 @@ Route::middleware(["auth"])->group(function()
 		Route::get("/", function(){ return(view("datas.index")); });
 
 		Route::get("/collections", "DataController@printCollections");
+		Route::get("/tarifs", "DataController@printTarifs");
+
 		Route::get("/{node}", "DataController@PrintData");
 	});
 

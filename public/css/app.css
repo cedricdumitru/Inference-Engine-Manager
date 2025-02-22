@@ -136,7 +136,7 @@ table.tableApp th, table.tableApp tr:not(.controls) td
 	min-height: 45px;
 	display: inline-block;
 	padding: .5em;
-	min-width: 280px;
+	min-width: 160px;
 }
 
 table.tableApp tr:not(.controls)

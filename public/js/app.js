@@ -125,7 +125,7 @@ class TableApp
 			contentType: "application/json",
 			data: JSON.stringify({"header": self.header, "data": self.data}),
 			dataType: "json"
-		}).done(() =>
+		}).always(() =>
 		{
 			let container = self.destroyTable();
 			new TableApp(container, self.submitUrl, self.specialEdit);
@@ -245,7 +245,13 @@ class TableApp
 				self.container.find("tbody").append("<tr class=\"working\"></tr>");
 				index.forEach(function(subIndex)
 				{
-					self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\">"+subIndex+"</td>");
+					//TODO: cast booleans to checkboxes
+					if (subIndex === true || subIndex === false)
+						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\">"+subIndex+"</td>")
+					else if (subIndex === null)
+						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\"></td>")
+					else
+						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\">"+subIndex+"</td>");
 					i++;
 				});
 				self.container.find("tbody tr.working td:not(.editing)").each(function()
@@ -261,6 +267,8 @@ class TableApp
 				//TODO: cast booleans to checkboxes
 				if (index === true || index === false)
 					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>")
+				else if (index == null)
+					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\"></td></tr>")
 				else
 					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>");
 				i++;
@@ -319,7 +327,7 @@ class TableApp
 			else if ($(this).text() === "false")
 				elementArray.push(false);
 			else if ($(this).text() === "")
-				elementArray.push("");
+				elementArray.push(null);
 			else
 				elementArray.push((!isNaN($(this).text())) ? Number($(this).text()) : $(this).text());
 		});

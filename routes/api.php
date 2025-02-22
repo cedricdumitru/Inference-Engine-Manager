@@ -17,9 +17,6 @@ Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 {
 	Route::group(["middleware" => ['sessions', "web"], "prefix" => "/list"], function()
 	{
-		Route::get("/collections", "CollectionController@getCollectionsList");
-		Route::put("/collections", "CollectionController@setCollectionsList");
-
 		Route::get("/categories", "CategoryController@getCategoriesList");
 		Route::put("/categories", "CategoryController@setCategoriesList");
 	});
