@@ -11,10 +11,8 @@
  |  __| | '_ \ / _` | | '_ \ / _ \
  | |____| | | | (_| | | | | |  __/
  |______|_| |_|\__, |_|_| |_|\___|
-                __/ |
-               |___/
-  __  __
- |  \/  |
+  __  __        __/ |
+ |  \/  |      |___/
  | \  / | __ _ _ __   __ _  __ _  ___ _ __
  | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|
  | |  | | (_| | | | | (_| | (_| |  __/ |
@@ -74,13 +72,13 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 		<link rel="stylesheet" type="text/css" href="/css/Framework.css">
 	</head>
 	<body class="relative brandColorTertiary">
-		<nav class="flex row noWrap xSpaceBetween">
+		<nav id="mainMenu" class="flex row noWrap xSpaceBetween">
 			<img src="https://via.placeholder.com/150" alt="Company Logo" class="logo" />
 			<ul class="flex row noWrap xSpaceAround yCenter">
 				<li class="brandColorTertiary"><a href="/">accueil</a></li>
 				@if (Auth::check())
 					<li class="brandColorTertiary"><a href="/devis">devis</a></li>
-					<li class="brandColorTertiary"><a href="/gestion">insertion données</a></li>
+					<li class="brandColorTertiary"><a href="/gestion">insertion de données</a></li>
 					<li class="brandColorTertiary"><a href="/parametres">paramètres</a></li>
 					<li class="brandColorTertiary"><a href="/deconnexion">déconnexion</a></li>
 				@else
@@ -88,6 +86,24 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 				@endif
 			</ul>
 		</nav>
+		<nav aria-label="breadcrumb" role="navigation">
+				@php
+					$segments = Request::segments();
+					$href = url('/');
+				@endphp
+				<ul class="breadcrumb">
+					@foreach($segments as $segment)
+					@php
+						$href .= "/".$segment;
+					@endphp
+					@if ($loop->last)
+					<li class="breadcrumb-item active" aria-current="page">{{ $segment }}</li>
+					@else
+					    <li class="breadcrumb-item"><a href="{{ $href }}">{{ $segment }}</a></li>
+					@endif
+				    @endforeach
+				</ul>
+			    </nav>
 		@yield ("content")
 	</body>
 </html>

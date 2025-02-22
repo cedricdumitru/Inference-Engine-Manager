@@ -15,18 +15,24 @@ Route::middleware(["auth"])->group(function()
 {
 	Route::get("/", "DashboardController@printDashboard")->name("home");
 
-	Route::get("/deconnexion", function()
-	{
-		Auth::logout();
-		return(redirect("connexion"));
-	});
-
 	Route::group(["prefix" => "/gestion"], function()
 	{
 		Route::get("/", function()
 		{
 			return(view("gestion"));
 		});
+	});
+
+	Route::group(["prefix" => "/parametres"], function()
+	{
+		Route::get("/", function(){ return(view("settings")); });
+		Route::get("/unites", function(){ return(view("settings")); });
+	});
+
+	Route::get("/deconnexion", function()
+	{
+		Auth::logout();
+		return(redirect("connexion"));
 	});
 });
 
