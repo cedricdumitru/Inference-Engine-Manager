@@ -385,7 +385,7 @@ class TableApp
 				});
 				console.log("start");
 			},
-			stop: function(event, ui)
+			beforeStop: function(event, ui)
 			{
 				$(ui.helper).off();
 			}
