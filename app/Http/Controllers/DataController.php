@@ -40,7 +40,7 @@ class DataController extends Controller
 	{
 		if(array_key_exists($this->node, $this->models))
 		{
-			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'node' => $this->node, "navigation" => true]);
+			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'groupeType' => $this->groupeType, 'node' => $this->node, "navigation" => true]);
 		}
 		return "La page que vous recherchez est introuvable";
 	}
