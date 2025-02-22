@@ -23,30 +23,15 @@ class nestableNavBar
 				self.data = data;
 				self.emptyContainer = $(self.container.clone());
 				console.log(self.data);
-//				self.buildTable();
+				self.buildList();
 			});
 	}
-
-	addControls()
+	
+	buildList()
 	{
-		let self = this;
-
-		for(let i = 0; i < this.header.length - 1; i++)
+		self.data.forEach(element =>
 		{
-			this.container.find("thead tr.controls").append("<td></td>");
-		}
-		this.container.find("thead tr.controls").append("<td><div class=\"relative\"><i class=\"mdi mdi-close absolute pointer\"></i></div><div class=\"relative\"><i class=\"mdi mdi-check absolute pointer\"></i></div></td>");
-
-		this.container.find("thead tr.controls td div i.mdi-close").click(function()
-		{
-			let container = self.destroyTable();
-
-			new TableApp(container, self.submitUrl);
-		});
-
-		this.container.find("thead tr.controls td div i.mdi-check").click(function()
-		{
-			self.applyTable();
+			console.log(element);
 		});
 	}
 }
