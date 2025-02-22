@@ -377,22 +377,12 @@ class TableApp
 			{
 				self.testForUpdates();
 			},
-			sort: function()
+			sort: function(event, ui)
 			{
-				console.log("sorting");
+				console.log(ui.offset);
+//				console.log($(e.target).parents("tbody").offset().top);
+//				console.log(e.pageY);
 			},
-			start: function(event, ui)
-			{
-				$(ui.helper).parent().mousemove(function(e)
-				{
-					console.log($(e.target).parents("tbody").offset().top);
-					console.log(e.pageY);
-				});
-			},
-			beforeStop: function(event, ui)
-			{
-				$(ui.helper).parent().off("mousemove");
-			}
 		});
 		this.container.find("tbody" ).disableSelection();
 	}
