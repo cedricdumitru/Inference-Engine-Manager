@@ -22,6 +22,6 @@ class CategoryController extends Controller
 
 	public function getCategories()
 	{
-		return($this->model->getCategories()->toJson());
+		return($this->model->getCategories()->get()->toJson());
 	}
 }
