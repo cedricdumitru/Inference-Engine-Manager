@@ -114,6 +114,15 @@ table.tableApp
 	border-collapse: collapse;
 }
 
+table.tableApp.empty
+{
+	background-color: rgba(0, 0, 0, 0.2);
+	width: 50%;
+	height: 100%;
+	min-height: 50vh;
+	min-width: 50vw;
+}
+
 table.tableApp thead th
 {
 	color: #777;
@@ -210,7 +219,4 @@ table.tableApp tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 
 div.navViewer
 {
-	background-color: rgba(0, 0, 0, 0.2);
-	width: 50%;
-	height: 100%;
 }
