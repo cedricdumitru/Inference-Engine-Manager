@@ -426,6 +426,7 @@ class TableApp
 
 	setSortable()
 	{
+		this.backupSize();
 		let self = this;
 		//TODO: Remove ternary operator multiline (set function anywhere else && call it in sortable())
 		this.container.find("tbody").sortable(
@@ -440,6 +441,21 @@ class TableApp
 			sort(event, ui) { return; },
 		});
 		this.container.find("tbody" ).disableSelection();
+	}
+
+	backupSize()
+	{
+		let headerSizes = [];
+		this.container.find("tr.header *").each(function(){
+			headerSizes.push($(this).width());
+		});
+
+		let i = 0;
+		this.container.find("tbody td").each(function()
+		{
+			$(this).width(headerSizes[i]);
+			i = (i + 1 > headerSizes.length - 1) ? 0 : i + 1;
+		});
 	}
 }
 

@@ -100,7 +100,7 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 				$href = url('/');
 			@endphp
 			<ul class="breadcrumb flex row nowrap">
-				<li class="breadcrumb-item"><a href="/"><i class="mdi mdi-home"></i></a></li>
+				<li class="breadcrumb-item"><a href="/"><i class="mdi mdi-home"></i> Accueil</a></li>
 				@if (isset($segments[0]))
 					<li style="margin: 0 10px; vertical-align: middle;">></li>
 				@endif
