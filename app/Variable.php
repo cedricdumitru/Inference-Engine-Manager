@@ -25,7 +25,7 @@ class Variable extends Model
 		"id",
 		"order",
 		"created_at",
-		"updated_at"
+		"updated_at",
 	];
 
 	/**
@@ -38,22 +38,18 @@ class Variable extends Model
 
 	function getVariable($filter)
 	{
-		return $this::where($filter)->first();
-	}
-
-	function getMultipleVariable($filter)
-	{
-		return $this::where($filter)->get();
+		return $this::where($filter)->orderBy('order', 'asc');
 	}
 
 	function getAllVariable()
 	{
-		return $this::all();
+		return $this::orderBy('order', 'asc')->get();
 	}
 
 	function recordExist($column, $value)
 	{
-		return (!!$this->where($column, $value)->count());
+		$result = ($value != null) ? $this->where($column, $value)->count() : $this->where($column)->count();
+		return (!!$result);
 	}
 
 	public function getTableColumns()

@@ -24,7 +24,7 @@ class Devis extends Model
 		"id",
 		"order",
 		"created_at",
-		"updated_at"
+		"updated_at",
 	];
 
 	/**
@@ -37,22 +37,18 @@ class Devis extends Model
 
 	function getDevis($filter)
 	{
-		return $this::where($filter)->first();
-	}
-
-	function getMultipleDevis($filter)
-	{
-		return $this::where($filter)->get();
+		return $this::where($filter)->orderBy('order', 'asc');
 	}
 
 	function getAllDevis()
 	{
-		return $this::all();
+		return $this::orderBy('order', 'asc')->get();
 	}
 
 	function recordExist($column, $value)
 	{
-		return (!!$this->where($column, $value)->count());
+		$result = ($value != null) ? $this->where($column, $value)->count() : $this->where($column)->count();
+		return (!!$result);
 	}
 
 	public function getTableColumns()

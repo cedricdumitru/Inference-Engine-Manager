@@ -36,7 +36,7 @@ class alert
 	}
 }
 
-class tableApp
+class TableApp
 {
 	constructor(container, submitUrl)
 	{
@@ -85,7 +85,7 @@ class tableApp
 		{
 			let container = self.destroyTable();
 
-			new tableApp(container, self.submitUrl);
+			new TableApp(container, self.submitUrl);
 		});
 
 		this.container.find("thead tr.controls td div i.mdi-check").click(function()
@@ -113,7 +113,7 @@ class tableApp
 		}).done(function(data)
 		{
 			let container = self.destroyTable();
-			new tableApp(container, self.submitUrl);
+			new TableApp(container, self.submitUrl);
 		});
 	}
 

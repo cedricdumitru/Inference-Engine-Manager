@@ -10,6 +10,6 @@
 <script>
 	(function()
 	{
-		new tableApp($("table.tableApp"), "/api/parametres/{{ $url }}");
+		new TableApp($("table.tableApp"), "/api/parametres/{{ $url }}");
 	})();
 </script>

@@ -12,7 +12,6 @@ class Unite extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		"order",
 	];
 
 	/**
@@ -37,7 +36,7 @@ class Unite extends Model
 
 	function getUnite($filter)
 	{
-		return $this::where($filter)->orderBy('order', 'desc');
+		return $this::where($filter)->orderBy('order', 'asc');
 	}
 
 	function getAllUnite()

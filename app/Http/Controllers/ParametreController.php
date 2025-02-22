@@ -118,16 +118,16 @@ class ParametreController extends Controller
 		{
 			array_push($dataList, array_values($value));
 		}
-		$i = 0;
+		$order = 0;
 		foreach ($request->data as $value)
 		{
-			$i++;
+			$order++;
 			$j = 0;
 			$k = 0;
 			$filter = array();
 			foreach ($request->header as $header)
 			{
-				$filter[$header] = $request->data[0][$k];
+				$filter[$header] = $value[$k];
 				$k++;
 			}
 
@@ -135,9 +135,8 @@ class ParametreController extends Controller
 			{
 					array_splice($dataList, array_search($value, $dataList), 1);
 					$edits = $filter;
-					$edits["order"] = $i;
-					$result = $this->model->{"get".$this->models[$this->node]["model"]}($filter)->update($edits);
-					dd($this->model->{"get".$this->models[$this->node]["model"]}($filter)->get());
+					$edits["order"] = $order;
+					$this->model->{"get".$this->models[$this->node]["model"]}($filter)->update($edits);
 			}
 			else
 			{
@@ -147,7 +146,7 @@ class ParametreController extends Controller
 				{
 					$parameter[$request->header[$j]] = $data;
 				}
-				$parameter->order = $i;
+				$parameter->order = $order;
 				$parameter->save();
 				$j++;
 			}
@@ -156,7 +155,6 @@ class ParametreController extends Controller
 		{
 			$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $element])->delete();
 		}
-
 		return($this->getParameter());
 	}
 }
