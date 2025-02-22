@@ -377,12 +377,9 @@ class TableApp
 			{
 				self.testForUpdates();
 			},
-			over: function(event, ui)
-			{
-				console.log("over");
-			},
 			start: function(event, ui)
 			{
+				console.log(ui);
 				console.log("start");
 			}
 		});
