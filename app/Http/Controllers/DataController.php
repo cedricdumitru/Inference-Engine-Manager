@@ -19,55 +19,10 @@ class DataController extends Controller
 	{
 		$this->models =
 		[
-			"civilites" => 
+			"produit" => 
 			[
-				"title" => "civilités",
-				"model" => "Civilite"
-			],
-			"clients" =>
-			[
-				"title" => "origine des clients",
-				"model" => "Client"
-			],
-			"devis" =>
-			[
-				"title" => "status des devis",
-				"model" => "Devis"
-			],
-			"fonctions" =>
-			[
-				"title" => "fonctions personnes",
-				"model" => "Fonction"
-			],
-			"garanties" =>
-			[
-				"title" => "types de garanties",
-				"model" => "Garantie"
-			],
-			"pays" =>
-			[
-				"title" => "pays",
-				"model" => "Pays"
-			],
-			"reglements" =>
-			[
-				"title" => "modes de règlement",
-				"model" => "Reglement"
-			],
-			"unites" =>
-			[
-				"title" => "unités",
-				"model" => "Unite"
-			],
-			"utilisateurs" =>
-			[
-				"title" => "profils utilisateurs",
-				"model" => "Utilisateur"
-			],
-			"variables" =>
-			[
-				"title" => "variables",
-				"model" => "Variable"
+				"title" => "produits",
+				"model" => "Produit"
 			]
 		];
 

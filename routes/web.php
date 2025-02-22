@@ -28,8 +28,8 @@ Route::middleware(["auth"])->group(function()
 	Route::group(["prefix" => "/parametres"], function()
 	{
 		Route::get("/", function(){ return(view("parametres.index")); });
-		Route::get("/{node}", "ParametreController@PrintParameter");
 		Route::get("/produit", "ParametreController@PrintProduit");
+		Route::get("/{node}", "ParametreController@PrintParameter");
 	});
 
 
