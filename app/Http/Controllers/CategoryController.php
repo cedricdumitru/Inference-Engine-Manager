@@ -9,4 +9,15 @@ use Validator;
 
 class CategoryController extends Controller
 {
+	use eloquentRequests;
+
+	public function __construct(Request $request)
+	{
+		$this->model = new Category;
+	}
+
+	public function getCategories()
+	{
+		return($this->model::getCategories()->toJson());
+	}
 }

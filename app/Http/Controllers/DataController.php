@@ -19,7 +19,6 @@ class DataController extends Controller
 
 	public function __construct(Request $request)
 	{
-//		Debugbar::error('Error!');
 		$this->models =
 		[
 			"produits" => 

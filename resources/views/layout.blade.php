@@ -99,9 +99,7 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 			@endphp
 			<ul class="breadcrumb flex row nowrap">
 				@foreach($segments as $segment)
-					@php
-						$href .= "/".$segment;
-					@endphp
+					@php $href .= "/".$segment; @endphp
 					@if ($loop->last)
 					<li class="breadcrumb-item active" aria-current="page">{{ $segment }}</li>
 					@else

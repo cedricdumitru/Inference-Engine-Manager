@@ -28,5 +28,12 @@ class Category extends Model
      * @var array
      */
     protected $casts = [
-    ];
+	];
+
+	protected $table = 'categories';
+
+	public function getCategories()
+	{
+		return $this->hasMany('categories', 'act_parent', 'act_id')->with('getCategories');
+	}
 }
