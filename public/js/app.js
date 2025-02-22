@@ -381,14 +381,13 @@ class TableApp
 			{
 				$(ui.helper).parent().mousemove(function(e)
 				{
-					console.log(this);
 					console.log("e.offset.y = "+e.offsetY);
 				});
 				console.log("start");
 			},
 			beforeStop: function(event, ui)
 			{
-				$(ui.helper).off();
+				$(ui.helper).parent().off();
 			}
 		});
 		this.container.find("tbody" ).disableSelection();
