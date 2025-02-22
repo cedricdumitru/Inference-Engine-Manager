@@ -20,7 +20,7 @@ Route::group(["middleware" => ['sessions', "web"], "prefix" => "/"], function()
 		Route::post("/", function(Request $request)
 		{
 			echo("POST");
-			//var_dump($request->node);
+			//$request->node
 		});
 		Route::get("/", function(Request $request)
 		{

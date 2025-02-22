@@ -2,8 +2,6 @@
 <table class="tableApp sortable margincenter">
 	<thead>
 		<tr class="controls">
-			<td><div class="relative"><i class="mdi mdi-close absolute pointer"></i></div></td>
-			<td><div class="relative"><i class="mdi mdi-check absolute pointer"></i></div></td>
 		</tr>
 		<tr class="header"></tr>
 	</thead>

@@ -127,6 +127,11 @@ table tr:not(.controls) td
 	min-width: 280px;
 }
 
+table tr.controls td
+{
+	padding: 0;
+}
+
 table tr.controls td div.relative i
 {
 	top: -30px;
