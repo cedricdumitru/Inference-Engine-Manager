@@ -387,7 +387,7 @@ class TableApp
 			},
 			beforeStop: function(event, ui)
 			{
-				$(ui.helper).parent().off();
+				$(ui.helper).parent().off("mousemove");
 			}
 		});
 		this.container.find("tbody" ).disableSelection();
