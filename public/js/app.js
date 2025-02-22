@@ -371,6 +371,8 @@ class TableApp
 		let self = this;
 		this.container.find("tbody").sortable(
 		{
+			containment: "parent",
+			tolerance: "intersect",
 			axis: "y",
 			update(event, ui)
 			{
