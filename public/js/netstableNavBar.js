@@ -29,7 +29,7 @@ class nestableNavBar
 	
 	buildList()
 	{
-		let root = this.container.append($("<ul class=\"navNestableRoot\"></ul>")).find("ul.navNestableRoot");
+		let root = this.container.append($("<ul class=\"navNestableRoot navNestable\"></ul>")).find("ul.navNestableRoot");
 		this.data.forEach(element =>
 		{
 			if (!!element.referral)
