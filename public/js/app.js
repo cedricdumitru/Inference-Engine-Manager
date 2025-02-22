@@ -379,7 +379,7 @@ class TableApp
 			},
 			sort: function(event, ui)
 			{
-				console.log(ui.offset);
+				console.log(ui.position);
 //				console.log($(e.target).parents("tbody").offset().top);
 //				console.log(e.pageY);
 			},
