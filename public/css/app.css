@@ -128,7 +128,7 @@ table tr:not(.controls) td
 	min-width: 280px;
 }
 
-table tbody>tr
+table tr:not(.controls)
 {
 	border-top: 0.5px solid lightgrey;
 	border-right: 0.5px solid lightgrey;
