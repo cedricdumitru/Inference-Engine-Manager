@@ -68,8 +68,12 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 		@endforeach
 		<!-- ending insertion of HEADER_CODES -->
 		
-		<link rel="stylesheet" type="text/css" href="/css/app.css">
-		<link rel="stylesheet" type="text/css" href="/css/Framework.css">
+		<link rel="stylesheet" type="text/css" href="/css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/Framework.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/3.8.95/css/materialdesignicons.min.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+		<script src="/js/app.js"></script>
 	</head>
 	<body class="relative brandColorTertiary">
 		<nav id="mainMenu" class="flex row noWrap xSpaceBetween">

@@ -74,6 +74,14 @@ body>nav#mainMenu li
 	margin: 0 10px;
 }
 
+ul#listActions.borderBottom
+{
+	border-bottom: 1px solid #d4d4d4;
+	width: calc(100% - 50px);
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+}
+
 ul#listActions li
 {
 	padding: 10px;
@@ -95,4 +103,32 @@ ul#listActions a
 {
 	height: 100%;
 	width: 100%;
+}
+
+table
+{
+	color: #333;
+	background: white;
+	border: 1px solid grey;
+	font-size: 12pt;
+	border-collapse: collapse;
+}
+
+table thead th
+{
+	color: #777;
+	background-color: rgba(0,0,0,.1);
+}
+
+table th,
+table td
+{
+	padding: .5em;
+	border: 1px solid lightgrey;
+	min-width: 280px;
+}
+
+table tbody tr:hover
+{
+	background-color: #F5F5F5
 }
