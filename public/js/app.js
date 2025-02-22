@@ -381,8 +381,8 @@ class TableApp
 			{
 				$(ui.helper).parent().mousemove(function(e)
 				{
-					console.log($(e.target).parents("tbody").offset());
-					console.log(e);
+					console.log($(e.target).parents("tbody").offset().top);
+					console.log(e.pageY);
 				});
 			},
 			beforeStop: function(event, ui)
