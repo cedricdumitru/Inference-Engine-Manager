@@ -1,4 +1,4 @@
-class alert
+class Alert
 {
 	constructor(title, textAction, textApply, applyCallback, negative)
 	{
@@ -12,7 +12,7 @@ class alert
 
 	createModal()
 	{
-		$("body").append("<div class=\"greyFilter absolute\" style=\"top: 0; right: 0; left: 0; height: 100vh; overflow: hidden; z-index: 98; background-color: rgba(0, 0, 0, 0.75);\"></div>")
+		$("body").append("<div class=\"greyFilter absolute\" style=\"top: 0; right: 0; left: 0; height: 100vh; overflow: hidden; z-index: 98; background-color: rgba(0, 0, 0, 0.75);\"></div>");
 		this.container = $("body .greyFilter").append("<form class=\"absolute\" style=\"height: auto; min-width: 300px; max-width: 400px; width: 100%; top: 25%; left: 50%; transform: translate(-50%, -50%); background-color: #FFFFFF; padding: 10px; border-radius: 4px;\"></form>");
 		$("body .greyFilter form").append("<div class\"textcenter\" style=\"font-size: 2rem;\">"+this.title+"</div>");
 		$("body .greyFilter form").append("<span class\"textcenter\">"+this.textAction+"</span>");
@@ -134,7 +134,7 @@ class TableApp
 				e.preventDefault();
 				e.stopPropagation();
 				let element = $(this).parents("tr");
-				new alert("Supprimer la ligne", "Souhaitez-vous supprimer cette ligne ?", "supprimer",
+				new Alert("Supprimer la ligne", "Souhaitez-vous supprimer cette ligne ?", "supprimer",
 				function(e)
 				{
 					element.remove();
@@ -253,7 +253,7 @@ class TableApp
 			self.setRemovableElement(self.container.find("tbody tr.createdRow"));
 			$("tr.createdRow").removeClass("createdRow");
 			self.testForUpdates();
-		})
+		});
 	}
 
 	computeTable()
@@ -347,7 +347,7 @@ class TableApp
 			}
 		}
 		return true;
-	};
+	}
 
 	testForUpdates()
 	{

@@ -139,7 +139,7 @@ table tr:not(.controls) td input
 	padding: .5em;
 	width: 100%;
 	outline: none;
-	border: none !important;
+	border-width: 0;
 	background-color: rgba(0, 0, 0, 0);
 }
 
@@ -181,5 +181,4 @@ table tbody tr div.relative i:hover
 {
 	color: #EF0739;
 	transition: all 0.1s linear;
-}
 }
