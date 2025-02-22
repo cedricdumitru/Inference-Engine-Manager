@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 use Validator;
-use Debugbar;
 
 class DataController extends Controller
 {
