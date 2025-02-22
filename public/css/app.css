@@ -159,7 +159,7 @@ table tr.controls td
 
 table tr td:last-of-type:not(:first-of-type)
 {
-	border-left: 4px solid red;
+	border-left: 0.5px solid lightgrey;
 }
 
 table tr.controls td div.relative i
