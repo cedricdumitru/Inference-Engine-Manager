@@ -226,10 +226,6 @@ div.navViewer>ul.navNestableRoot
 	align-items: stretch;
 	border-top: 1px solid #4E4E4E;
 	border-bottom: 1px solid #4E4E4E;
-}
-
-div.navViewer>ul.navNestableRoot>li
-{
 	border-left: 1px solid #4E4E4E;
 	border-right: 1px solid #4E4E4E;
 }
