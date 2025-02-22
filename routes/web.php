@@ -42,3 +42,7 @@ Route::get('/connexion', function()
 })->name("connexion");
 
 Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

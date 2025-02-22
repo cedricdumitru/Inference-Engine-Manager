@@ -143,6 +143,11 @@ table tr:not(.controls) td input
 	background-color: rgba(0, 0, 0, 0);
 }
 
+table tr:not(.controls) td:hover input
+{
+	border-width: 0;
+}
+
 table tr.controls td
 {
 	padding: 0;
