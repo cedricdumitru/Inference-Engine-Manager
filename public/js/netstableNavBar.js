@@ -29,7 +29,7 @@ class nestableNavBar
 	
 	buildList()
 	{
-		self.data.forEach(element =>
+		this.data.forEach(element =>
 		{
 			console.log(element);
 		});
