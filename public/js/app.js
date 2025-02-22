@@ -381,9 +381,6 @@ class TableApp
 			{
 				let position = ui.position.top - $(ui.helper).parents("tbody").offset().top;
 				console.log(position);
-				console.log("ui.position = "+ ui.position.top + " && ui.offset = "+ ui.offset.top);
-//				console.log($(e.target).parents("tbody").offset().top);
-//				console.log(e.pageY);
 			},
 		});
 		this.container.find("tbody" ).disableSelection();
