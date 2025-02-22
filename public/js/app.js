@@ -38,7 +38,7 @@ class Alert
 
 class TableApp
 {
-	constructor(container, submitUrl)
+	constructor(container, submitUrl, foldable)
 	{
 		this.container = container;
 		this.submitUrl = submitUrl;
