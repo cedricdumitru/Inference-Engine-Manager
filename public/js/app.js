@@ -382,7 +382,7 @@ class TableApp
 				let container = (ui.helper).parents("tbody")
 				let position = Math.floor((event.pageY - $(ui.helper).parents("tbody").offset().top) / 46);
 				console.log("td:nth-child("+ position +")");
-				console.log($(container.children[position]).text());
+				console.log($(container.children[position]));
 			},
 		});
 		this.container.find("tbody" ).disableSelection();
