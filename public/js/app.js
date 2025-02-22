@@ -370,15 +370,17 @@ class TableApp
 	setSortable()
 	{
 		let self = this;
+		//TODO: Remove ternary operator multiline (set function anywhere else && call it in sortable())
 		this.container.find("tbody").sortable(
 		{
+			axis: ((this.foldable) ? "false" : "y"),
 			tolerance: "intersect",
 			placeholder: "sortable-placeholder",
 			update(event, ui)
 			{
 				self.testForUpdates();
 			},
-			sort: ( (this.foldable) ? 
+			sort: ((this.foldable) ? 
 			(
 				function(event, ui)
 				{
@@ -389,7 +391,7 @@ class TableApp
 						console.log("folding");
 					}
 				}
-			) : (function(event, ui) { console.log("test"); return; })),
+			) : (function(event, ui) { return; })),
 		});
 		this.container.find("tbody" ).disableSelection();
 	}
