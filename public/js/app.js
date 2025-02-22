@@ -168,7 +168,7 @@ class TableApp
 		if (!this.specialEdit) return;
 		element.hover(function()
 		{
-			$(this).find("td:last-of-type").addClass("relative")
+			$(this).find("td:last-of-type").addClass("relative");
 			$(this).find("td:last-of-type").append("<i class=\"mdi mdi-pencil absolute pointer\"></i>");
 			$(this).find("i.mdi-pencil").click(function(e)
 			{
@@ -221,7 +221,7 @@ class TableApp
 			$(this).find("input").keypress(function(event)
 			{
 				var keycode = (event.keyCode ? event.keyCode : event.which);
-				if(keycode == "13")
+				if(keycode === "13")
 				{
 					self.applyEditContent(element, self);
 				}
@@ -247,9 +247,9 @@ class TableApp
 				{
 					//TODO: cast booleans to checkboxes
 					if (subIndex === true || subIndex === false)
-						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\">"+subIndex+"</td>")
+						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\">"+subIndex+"</td>");
 					else if (subIndex === null)
-						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\"></td>")
+						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\"></td>");
 					else
 						self.container.find("tbody tr.working").append("<td data-header=\""+self.header[i]+"\">"+subIndex+"</td>");
 					i++;
@@ -266,9 +266,9 @@ class TableApp
 			{
 				//TODO: cast booleans to checkboxes
 				if (index === true || index === false)
-					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>")
+					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>");
 				else if (index == null)
-					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\"></td></tr>")
+					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\"></td></tr>");
 				else
 					self.container.find("tbody").append("<tr><td data-header=\""+self.header[i]+"\">"+index+"</td></tr>");
 				i++;
@@ -437,7 +437,7 @@ class TableApp
 			{
 				self.testForUpdates();
 			},
-			sort: function(event, ui) { return; },
+			sort(event, ui) { return; },
 		});
 		this.container.find("tbody" ).disableSelection();
 	}
