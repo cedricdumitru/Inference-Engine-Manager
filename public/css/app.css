@@ -238,7 +238,7 @@ div.navViewer ul.navNestable
 
 div.navViewer ul.navNestable:not(.navNestableRoot)
 {
-	padding-left: 30px;
+	padding-left: 20px;
 }
 
 div.navViewer ul.navNestable:not(.navNestableRoot):before
@@ -276,7 +276,7 @@ div.navViewer ul.navNestable:not(:last-of-type):not(:first-of-type)
 div.navViewer ul.navNestable li
 {
 	cursor: pointer;
-	padding: 0px 10px 0 5px;
+	padding: 0px 10px 0 20px;
 }
 
 div.navViewer ul.navNestable li.hovering
