@@ -231,7 +231,7 @@ div.navViewer>ul.navNestableRoot
 	padding-left: 20px;
 }
 
-div.navViewer ul.navNestableRoot li:hover
+div.navViewer ul.navNestableRoot * li:hover
 {
 	background-color: rgba(0, 0, 0, 1.1);
 }
