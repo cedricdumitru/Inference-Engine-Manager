@@ -17,6 +17,6 @@ class CategoryController extends Controller
 
 	public function getCategories()
 	{
-		return(Category::whereNull('referral')->with("getCategories")->get()->toJson());
+		return(Category::whereNull('referral')->with("children")->get()->toJson());
 	}
 }

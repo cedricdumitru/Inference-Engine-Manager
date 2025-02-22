@@ -32,8 +32,8 @@ class Category extends Model
 
 	protected $table = 'categories';
 
-	public function getCategories()
+	public function children()
 	{
-		return $this->hasMany('App\Category', 'id', 'referral')->with('getCategories');
+		return $this->hasMany('App\Category', 'referral', 'id')->with('children');
 	}
 }
