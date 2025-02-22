@@ -17,6 +17,6 @@ class CategoryController extends Controller
 
 	public function getCategories()
 	{
-		return(Category::all()->orderBy("id")->toJson());
+		return(Category::orderBy("id")->get()->toJson());
 	}
 }
