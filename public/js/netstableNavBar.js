@@ -29,19 +29,19 @@ class nestableNavBar
 	
 	buildList()
 	{
-		let root = this.container.append($("<ul class=\"navNestableRoot\"></ul>")).find("ul");
+		let root = this.container.append($("<ul class=\"navNestableRoot\"></ul>")).find("ul.navNestableRoot");
 		this.data.forEach(element =>
 		{
 			if (!!element.referral)
 			{
-				let tempRoot = (root.find("li[data-id=\""+element.referral+"\"]>ul").length === 0)
-					? root.find("li[data-id=\""+element.referral+"\"]").append($("<ul class=\"working\"></ul>")).find("ul")
-					: root.find("li[data-id=\""+element.referral+"\"]>ul");
+				let tempRoot = (root.find("li[data-id=\""+element.referral+"\"]>ul.navNestable").length === 0)
+					? root.find("li[data-id=\""+element.referral+"\"]").append($("<ul class=\"navNestable\"></ul>")).find("ul.navNestable")
+					: root.find("li[data-id=\""+element.referral+"\"]>ul.navNestable");
 				tempRoot.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"));
 			}
 			else
 			{
-				root.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"))
+				root.append($("<li data-id=\""+element.id+"\" class=\"navNestableLine\">"+element.name+"</li>"));
 			}
 			console.log(element);
 		});
