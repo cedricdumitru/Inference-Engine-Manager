@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(["auth"])->group(function()
+{
+	Route::get("/", function()
+	{
+		return(view("dashboard"));
+	});
+
+	Route::get("/logout", function()
+	{
+		Auth::logout();
+		return(redirect('connexion'));
+	});
 });
+
+Route::get('/connexion', function()
+{
+	return(view("login"));
+})->name("connexion");
+Auth::routes();
