@@ -195,7 +195,7 @@ table tbody tr.sortable-placeholder
 	background-color: rgba(0, 102, 255, 0.568);
 }
 
-table tbody>tr[data-parent]>td:first-of-type
+table tbody>tr[data-parent="*"]>td:first-of-type
 {
 	padding-left: 30px;
 }
