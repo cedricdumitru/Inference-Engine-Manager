@@ -231,14 +231,14 @@ div.navViewer>ul.navNestableRoot
 	padding-left: 20px;
 }
 
-div.navViewer ul.navNestable li.hovering
-{
-	background-color: rgba(0, 0, 0, 0.2);
-}
-
 div.navViewer ul.navNestable
 {
 	position: relative;
+}
+
+div.navViewer ul.navNestable:not(.navNestableRoot)
+{
+	padding-left: 40px;
 }
 
 div.navViewer ul.navNestable:not(.navNestableRoot):before
@@ -265,15 +265,21 @@ div.navViewer ul.navNestable:not(.navNestableRoot):after
 	background-color: rgb(177, 177, 177);
 }
 
-div.navViewer ul.navNestable:not(.navNestableRoot)
-{
-	padding-left: 40px;
-}
-
 div.navViewer ul.navNestable:not(:last-of-type):not(:first-of-type)
 {
 	padding: 5px 10px;
 	border-top: 1px solid #4E4E4E;
 	border-bottom: 1px solid #4E4E4E;
 	background-color: #FFFFFF;
+}
+
+div.navViewer ul.navNestable li
+{
+	cursor: pointer;
+	padding: 5px 10px;
+}
+
+div.navViewer ul.navNestable li.hovering
+{
+	background-color: rgba(0, 0, 0, 0.2);
 }
