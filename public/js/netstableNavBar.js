@@ -33,21 +33,27 @@ class nestableNavBar
 		{
 			if (!!element.referral)
 			{
+				root.find("li[data-id=\""+element.referral+"\"]>i").first().removeClass("mdi-folder-outline"); //Remove empty folder icon
+				root.find("li[data-id=\""+element.referral+"\"]>i").first().addClass("mdi-folder-open"); //Add open folder icon
+
 				let tempRoot = (root.find("li[data-id=\""+element.referral+"\"]>ul.navNestable").length === 0)
 					? root.find("li[data-id=\""+element.referral+"\"]").append($("<ul class=\"navNestable\"></ul>")).find("ul.navNestable")
 					: root.find("li[data-id=\""+element.referral+"\"]>ul.navNestable");
-				tempRoot.append($("<li data-id=\""+element.id+"\" class=\"folder navNestableLine\"><i class=\"mdi mdi-folder-open\"></i>"+element.name+"</li>"));
+				tempRoot.append($("<li data-id=\""+element.id+"\" class=\"folder navNestableLine\"><i class=\"mdi mdi-folder-outline\"></i>"+element.name+"</li>"));
 			}
 			else
 			{
-				root.append($("<li data-id=\""+element.id+"\" class=\"folder navNestableLine\"><i class=\"mdi mdi-folder-open\"></i>"+element.name+"</li>"));
+				root.append($("<li data-id=\""+element.id+"\" class=\"folder navNestableLine\"><i class=\"mdi mdi-folder-outline\"></i>"+element.name+"</li>"));
 			}
 			if (element.products.length > 0)
 			{
+				root.find("li[data-id=\""+element.id+"\"]>i").first().removeClass("mdi-folder-outline"); //Remove empty folder icon
+				root.find("li[data-id=\""+element.id+"\"]>i").first().addClass("mdi-folder-open"); //Add open folder icon
+				
 				let i = 0;
 				while (i < element.products.length)
 				{
-					let product = element.products[i];					
+					let product = element.products[i];
 					let tempRoot = (root.find("li[data-id=\""+product.referral+"\"]>ul.navNestable").length === 0)
 						? root.find("li[data-id=\""+product.referral+"\"]").append($("<ul class=\"navNestable\"></ul>")).find("ul.navNestable")
 						: root.find("li[data-id=\""+product.referral+"\"]>ul.navNestable");
