@@ -192,6 +192,15 @@ table tbody tr.sortable-placeholder
 {
 	border-radius: 5px;
 	border: none;
-	opacity: 0.2;
 	background-color: rgba(0, 102, 255, 0.568);
+}
+
+table tbody tr[data-parent]
+{
+	padding-left: 50px;
+}
+
+table tbody tr[data-parent=""], table tbody tr:not([data-parent])
+{
+	padding-left: 0;
 }
