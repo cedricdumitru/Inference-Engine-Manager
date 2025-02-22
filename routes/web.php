@@ -14,23 +14,17 @@ Route::middleware(["auth"])->group(function()
 {
 	Route::get("/", "DashboardController@printDashboard")->name("home");
 
-
-
 	Route::group(["prefix" => "/gestion"], function()
 	{
 		Route::get("/", function(){ return(view("datas.index")); });
 		Route::get("/{node}", "DataController@PrintData");
 	});
 
-
-
 	Route::group(["prefix" => "/parametres"], function()
 	{
 		Route::get("/", function(){ return(view("parametres.index")); });
 		Route::get("/{node}", "ParametreController@PrintParameter");
 	});
-
-
 
 	Route::get("/deconnexion", function()
 	{

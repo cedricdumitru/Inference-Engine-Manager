@@ -91,6 +91,7 @@ class ParametreController extends Controller
 
 	public function PrintParameter()
 	{
+		dd($this->groupeType);
 		if(array_key_exists($this->node, $this->models))
 		{
 			return view("singleTableNode", ["title" => $this->models[$this->node]["title"], 'groupeType' => $this->groupeType, 'node' => $this->node, "navigation" => false]);
