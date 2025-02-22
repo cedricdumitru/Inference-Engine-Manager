@@ -195,12 +195,12 @@ table tbody tr.sortable-placeholder
 	background-color: rgba(0, 102, 255, 0.568);
 }
 
-table tbody tr[data-parent]
+table tbody>tr[data-parent]>td:first-of-type
 {
 	padding-left: 50px;
 }
 
-table tbody tr[data-parent=""], table tbody tr:not([data-parent])
+table tbody>tr[data-parent=""]>td, table tbody>tr:not([data-parent])>td:first-of-type
 {
 	padding-left: 0;
 }
