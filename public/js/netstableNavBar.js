@@ -19,7 +19,7 @@ class nestableNavBar
 				dataType: "json"
 			}).done(function(data)
 			{
-				if (!data.length) throw "Empty data, check resourceUrl is correct";
+				if (!data.length) return;
 				self.data = data;
 				self.emptyContainer = $(self.container.clone());
 				console.log(self.data);
