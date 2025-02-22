@@ -8,7 +8,7 @@
 					<strong>Whoops!</strong> Une erreur s'est produite !
 				@endcomponent
 			@endif
-			@component('arrayViewer', ["title" => $title, "url" => $node, "foldable" => false])
+			@component('arrayViewer', ["title" => $title, "groupeType" => $groupeType, "url" => $node])
 				<strong>Whoops!</strong> Une erreur s'est produite !
 			@endcomponent
 		</div>

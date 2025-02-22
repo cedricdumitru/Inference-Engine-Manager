@@ -18,6 +18,7 @@ Route::middleware(["auth"])->group(function()
 
 	Route::group(["prefix" => "/gestion"], function()
 	{
+		$groupeType = "gestion";
 		Route::get("/", function(){ return(view("datas.index")); });
 		Route::get("/{node}", "DataController@PrintData");
 	});
@@ -26,6 +27,7 @@ Route::middleware(["auth"])->group(function()
 
 	Route::group(["prefix" => "/parametres"], function()
 	{
+		$groupeType = "parametres";
 		Route::get("/", function(){ return(view("parametres.index")); });
 		Route::get("/{node}", "ParametreController@PrintParameter");
 	});

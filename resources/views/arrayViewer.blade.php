@@ -8,6 +8,6 @@
 <script>
 	(function()
 	{
-		new TableApp($("table.tableApp"), "/api/parametres/{{ $url }}", {{ $foldable }});
+		new TableApp($("table.tableApp"), "/api/{{ $groupeType }}/{{ $url }}");
 	})();
 </script>
