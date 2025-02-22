@@ -84,7 +84,7 @@ class DataController extends Controller
 		return view("singleTableNode", ["title" => "Produits", 'groupeType' => $this->groupeType, 'node' => "produits", "navigation" => true, "url" => "/api/list/categories", "specialEdit" => true]);
 	}
 
-	public function getData(Request $request)
+	public function getData()
 	{
 
 		$header = array_values($this->model->getTableColumns());
