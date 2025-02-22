@@ -384,6 +384,10 @@ class TableApp
 					console.log(e);
 				});
 				console.log("start");
+			},
+			stop: function(event, ui)
+			{
+				$(ui.helper).off();
 			}
 		});
 		this.container.find("tbody" ).disableSelection();
