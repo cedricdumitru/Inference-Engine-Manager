@@ -1,7 +1,7 @@
 @extends ("layout")
 @section ("content")
 	<section id="dashboard tableApp" class="">
-		@if ($navigation)
+		@if (isset($navigation) && !empty($navigation) && !!$navigation)
 			@component('navViewer', ["title" => $title, "url" => $node, "foldable" => false])
 				<strong>Whoops!</strong> Une erreur s'est produite !
 			@endcomponent
