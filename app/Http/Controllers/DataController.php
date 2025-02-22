@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\CustomLibrary\HttpResponseCode;
 use App\Http\Controllers\Controller;
-use App\Traits\ParametresTrait;
 use App\Traits\eloquentRequests;
 
 use Illuminate\Http\Request;
@@ -14,7 +13,6 @@ use Validator;
 
 class DataController extends Controller
 {
-	use ParametresTrait;
 	use eloquentRequests;
 
 	public function __construct(Request $request)
