@@ -371,11 +371,20 @@ class TableApp
 		let self = this;
 		this.container.find("tbody").sortable(
 		{
-			tolerance: "pointer",
+			tolerance: "intersect",
 			placeholder: "sortable-placeholder",
 			update(event, ui)
 			{
 				self.testForUpdates();
+			},
+			over: function(event, ui)
+			{
+				console.log("over");
+			},
+			start: function(event, ui)
+			{
+				console.log("start");
+				console.log(ui.offset.top);
 			}
 		});
 		this.container.find("tbody" ).disableSelection();
