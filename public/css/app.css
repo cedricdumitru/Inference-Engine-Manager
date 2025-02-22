@@ -188,7 +188,7 @@ table tbody tr div.relative i:hover
 	transition: all 0.1s linear;
 }
 
-table tbody tr.sortable-placeholder
+table tbody tr.sortable-placeholder>td
 {
 	border-radius: 5px;
 	border: none;
