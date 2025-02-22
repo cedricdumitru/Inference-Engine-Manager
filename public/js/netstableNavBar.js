@@ -31,7 +31,7 @@ class nestableNavBar
 		let root = this.container.append($("<ul class=\"navNestableRoot navNestable\"></ul>")).find("ul.navNestableRoot");
 		this.data.forEach(element =>
 		{
-			if (!!element.referral)
+			if (element.referral)
 			{
 				root.find("li[data-id=\""+element.referral+"\"]>i").first().removeClass("mdi-folder-outline"); //Remove empty folder icon
 				root.find("li[data-id=\""+element.referral+"\"]>i").first().addClass("mdi-folder-open"); //Add open folder icon
