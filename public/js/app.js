@@ -318,6 +318,8 @@ class TableApp
 				elementArray.push(true);
 			else if ($(this).text() === "false")
 				elementArray.push(false);
+			else if ($(this).text() === "")
+				elementArray.push("");
 			else
 				elementArray.push((!isNaN($(this).text())) ? Number($(this).text()) : $(this).text());
 		});
