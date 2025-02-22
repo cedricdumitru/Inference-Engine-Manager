@@ -381,7 +381,7 @@ class TableApp
 			{
 				$(ui.helper).parent().mousemove(function(e)
 				{
-					console.log(e.target.parent());
+					console.log(e.target.parent);
 					console.log(e.offsetY);
 				});
 			},
