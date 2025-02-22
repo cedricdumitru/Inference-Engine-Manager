@@ -61,7 +61,6 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 		<link rel="shortcut icon" href="{{env("APP_FAVICON")}}"/>
 
 		<!-- starting insertion of HEADER_CODES -->
-		@php dd(env("HEADER_CODES")); @endphp
 		@foreach (explode(",", env("HEADER_CODES")) as $code)
 			<!-- inserting {{ $code }} -->
 			{!! env($code) !!}
