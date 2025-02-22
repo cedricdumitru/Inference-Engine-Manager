@@ -207,3 +207,10 @@ table.tableApp tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 {
 	border-left: 30px solid transparent;
 }
+
+div.navViewer
+{
+	background-color: rgba(0, 0, 0, 0.2);
+	width: 50%;
+	height: 100%;
+}
