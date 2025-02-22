@@ -69,8 +69,25 @@ https://github.com/mrstandu33/Inference-Engine-Manager
 			<!-- inserted {{$code}} -->
 		@endforeach
 		<!-- ending insertion of HEADER_CODES -->
+		
+		<link rel="stylesheet" type="text/css" href="/css/app.css">
+		<link rel="stylesheet" type="text/css" href="/css/Framework.css">
 	</head>
 	<body class="relative brandColorTertiary">
+		<nav class="flex row noWrap xSpaceBetween">
+			<img src="https://via.placeholder.com/150" alt="Company Logo" class="logo" />
+			<ul class="flex row noWrap xSpaceAround yCenter">
+				<li class="brandColorTertiary"><a href="/">accueil</a></li>
+				@if (Auth::check())
+					<li class="brandColorTertiary"><a href="/devis">devis</a></li>
+					<li class="brandColorTertiary"><a href="/gestion">insertion données</a></li>
+					<li class="brandColorTertiary"><a href="/parametres">paramètres</a></li>
+					<li class="brandColorTertiary"><a href="/deconnexion">déconnexion</a></li>
+				@else
+					<li class="brandColorTertiary"><a href="/connexion">connexion</a></li>
+				@endif
+			</ul>
+		</nav>
 		@yield ("content")
 	</body>
 </html>

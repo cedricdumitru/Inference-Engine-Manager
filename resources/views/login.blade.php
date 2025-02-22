@@ -26,7 +26,7 @@
 			</label>
 		</div>
 		<div>
-			<button type="submit" class="btn btn-primary">
+			<button type="submit" class="pointer">
 				{{ __('Login') }}
 			</button>
 		</div>

@@ -13,15 +13,20 @@
 
 Route::middleware(["auth"])->group(function()
 {
-	Route::get("/", function()
-	{
-		return(view("dashboard"));
-	});
+	Route::get("/", "DashboardController@printDashboard")->name("home");
 
 	Route::get("/deconnexion", function()
 	{
 		Auth::logout();
-		return(redirect('connexion'));
+		return(redirect("connexion"));
+	});
+
+	Route::group(["prefix" => "/gestion"], function()
+	{
+		Route::get("/", function()
+		{
+			return(view("gestion"));
+		});
 	});
 });
 

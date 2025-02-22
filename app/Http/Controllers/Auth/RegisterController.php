@@ -24,6 +24,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    Auth::routes(['register' => false]);
     /**
      * Create a new controller instance.
      *
