@@ -112,11 +112,12 @@ class ParametreController extends Controller
 
 	public function setParameter(Request $request)
 	{
-		$result = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());$data = array();
-		$dataList = array();
-		foreach ($result as $value)
+		$results = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());
+		$parameter = array();
+		$libelleList = array();
+		foreach ($results as $result)
 		{
-			array_push($dataList, array_values($value));
+			array_push($libelleList, $result["Libellé"]);
 		}
 		$order = 0;
 		foreach ($request->data as $value)
@@ -131,30 +132,30 @@ class ParametreController extends Controller
 				$k++;
 			}
 
-			if ($this->model->recordExist($filter, null))
+			if ($this->model->recordExist("Libellé", $filter["Libellé"]))
 			{
-				array_splice($dataList, array_search($value, $dataList), 1);
+				array_splice($libelleList, array_search($value, $libelleList), 1);
 				$edits = $filter;
 				$edits["order"] = $order;
-				$this->model->{"get".$this->models[$this->node]["model"]}($filter)->update($edits);
+				$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $filter["Libellé"]])->update($edits);
 			}
 			else
 			{
 				$model = "App\\".$this->models[$this->node]["model"];
 				$parameter = new $model;
-				foreach ($value as $data)
+				foreach ($value as $newData)
 				{
-					$parameter[$request->header[$j]] = $data;
+					$parameter[$request->header[$j]] = $newData;
 					$j++;
 				}
 				$parameter->order = $order;
 				$parameter->save();
 			}
 		}
-		foreach ($dataList as $element)
+		foreach ($libelleList as $libelle)
 		{
-			$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $element])->delete();
+			$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $libelle])->delete();
 		}
-		return($this->getParameter());
+		return;
 	}
 }

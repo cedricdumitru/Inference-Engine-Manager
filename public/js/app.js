@@ -46,7 +46,7 @@ class EditPopup
 
 	createModal()
 	{
-		
+
 	}
 }
 
@@ -128,7 +128,7 @@ class TableApp
 		}).done(() =>
 		{
 			let container = self.destroyTable();
-			new TableApp(container, self.submitUrl);
+			new TableApp(container, self.submitUrl, self.specialEdit);
 		});
 	}
 

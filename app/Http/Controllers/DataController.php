@@ -69,11 +69,12 @@ class DataController extends Controller
 
 	public function setData(Request $request)
 	{
-		$result = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());$data = array();
-		$dataList = array();
-		foreach ($result as $value)
+		$results = array_values($this->model->{"getAll".$this->models[$this->node]["model"]}()->toArray());
+		$data = array();
+		$libelleList = array();
+		foreach ($results as $result)
 		{
-			array_push($dataList, array_values($value));
+			array_push($libelleList, $result["Libellé"]);
 		}
 		$order = 0;
 		foreach ($request->data as $value)
@@ -88,30 +89,30 @@ class DataController extends Controller
 				$k++;
 			}
 
-			if ($this->model->recordExist($filter, null))
+			if ($this->model->recordExist("Libellé", $filter["Libellé"]))
 			{
-					array_splice($dataList, array_search($value, $dataList), 1);
-					$edits = $filter;
-					$edits["order"] = $order;
-					$this->model->{"get".$this->models[$this->node]["model"]}($filter)->update($edits);
+				array_splice($libelleList, array_search($value, $libelleList), 1);
+				$edits = $filter;
+				$edits["order"] = $order;
+				$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $filter["Libellé"]])->update($edits);
 			}
 			else
 			{
 				$model = "App\\".$this->models[$this->node]["model"];
 				$data = new $model;
-				foreach ($value as $data)
+				foreach ($value as $newData)
 				{
-					$data[$request->header[$j]] = $data;
+					$data[$request->header[$j]] = $newData;
+					$j++;
 				}
 				$data->order = $order;
 				$data->save();
-				$j++;
 			}
 		}
-		foreach ($dataList as $element)
+		foreach ($libelleList as $libelle)
 		{
-			$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $element])->delete();
+			$this->model->{"get".$this->models[$this->node]["model"]}(["Libellé" => $libelle])->delete();
 		}
-		return($this->getData());
+		return;
 	}
 }
