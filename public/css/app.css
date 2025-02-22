@@ -267,7 +267,7 @@ div.navViewer ul.navNestable:not(.navNestableRoot):after
 
 div.navViewer ul.navNestable:not(.navNestableRoot)
 {
-	padding-left: 50px;
+	padding-left: 40px;
 }
 
 div.navViewer ul.navNestable:not(:last-of-type):not(:first-of-type)
