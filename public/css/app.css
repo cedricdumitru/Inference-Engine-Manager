@@ -195,7 +195,12 @@ table tbody tr.sortable-placeholder>td
 	background-color: rgba(0, 102, 255, 0.2);
 }
 
+table tbody>tr[data-parent]:not([data-parent=""])
+{
+	border-left: 0.5px solid lightgrey;
+}
+
 table tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
 {
-	border-left: 30px transparent;
+	border-left: 30px solid transparent;
 }
