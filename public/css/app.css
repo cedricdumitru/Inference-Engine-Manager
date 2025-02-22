@@ -224,23 +224,25 @@ div.navViewer>ul.nestedNavRoot
 	flex-flow: column nowrap;
 	justify-content: start;
 	align-items: stretch;
+	border-top: 1px solid #4E4E4E;
+	border-bottom: 1px solid #4E4E4E;
 }
 
-div.navViewer>ul.nestedNavRoot>li
+div.navViewer>ul.nestedNav:not(:last-of-type):not(:first-of-type)
 {
 	padding: 5px 10px;
-	border-left: 1px solid #4E4E4E;
-	border-right: 1px solid #4E4E4E;
+	border-top: 1px solid #4E4E4E;
 	border-bottom: 1px solid #4E4E4E;
 	background-color: #FFFFFF;
 }
 
-div.navViewer>ul.nestedNavRoot>li:first-of-type
+div.navViewer>ul.nestedNavRoot>li
 {
-	border-top: 1px solid #4E4E4E;
+	border-left: 1px solid #4E4E4E;
+	border-right: 1px solid #4E4E4E;
 }
 
-div.navViewer>ul.nestedNavRoot>li:hover
+div.navViewer>ul.navNestedRoot li:hover
 {
 	background-color: rgba(0, 0, 0, 1.1);
 }
