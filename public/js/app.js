@@ -371,7 +371,7 @@ class TableApp
 		let self = this;
 		this.container.find("tbody").sortable(
 		{
-			tolerance: "intersect",
+			tolerance: "pointer",
 			placeholder: "sortable-placeholder",
 			update(event, ui)
 			{
