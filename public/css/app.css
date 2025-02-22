@@ -191,6 +191,7 @@ table tbody tr div.relative i:hover
 table tbody tr.sortable-placeholder
 {
 	border-radius: 5px;
+	border: none;
 	opacity: 0.2;
-	border: dashed 4px rgba(0, 102, 255, 0.568);
+	background-color: rgba(0, 102, 255, 0.568);
 }
