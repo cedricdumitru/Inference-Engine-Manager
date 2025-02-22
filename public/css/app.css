@@ -125,11 +125,15 @@ table tr:not(.controls) td
 	min-height: 45px;
 	display: inline-block;
 	padding: .5em;
+	min-width: 280px;
+}
+
+table tbody>tr
+{
 	border-top: 0.5px solid lightgrey;
 	border-right: 0.5px solid lightgrey;
 	border-bottom: 0.5px solid lightgrey;
 	border-left: 0.5px solid lightgrey;
-	min-width: 280px;
 }
 
 table tr:not(.controls) td input
@@ -151,6 +155,11 @@ table tr:not(.controls) td:hover input
 table tr.controls td
 {
 	padding: 0;
+}
+
+table tr.controls td:last-of-type
+{
+	border-left: 4px solid red;
 }
 
 table tr.controls td div.relative i
@@ -193,11 +202,6 @@ table tbody tr.sortable-placeholder>td
 	border-radius: 5px;
 	border: none;
 	background-color: rgba(0, 102, 255, 0.2);
-}
-
-table tbody>tr[data-parent]:not([data-parent=""])
-{
-	border-left: 0.5px solid lightgrey;
 }
 
 table tbody>tr[data-parent]:not([data-parent=""])>td:first-of-type
